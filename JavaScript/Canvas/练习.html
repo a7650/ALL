@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#a{
+				border: 1px black solid;
+				position: absolute;
+				top: 50px;
+				left: 200px;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="a" width="200" height="200">canvas</canvas>
+		
+		
+		
+		<script>
+			var key;
+			var a=document.getElementById("a");
+			var contex = a.getContext("2d");
+			contex.strokeStyle="deepskyblue";
+			contex.fillStyle="white";
+			a.onmousemove=function(event){
+				
+				if(key == 1){
+
+					contex.fillRect(0,0,300,200);			
+				var x=event.clientX-200;
+				var y=event.clientY-50;
+				contex.beginPath();
+				contex.moveTo(0,0);
+				contex.lineTo(x,y);
+				contex.moveTo(200,0);
+				contex.lineTo(x,y);
+				contex.moveTo(200,200);
+				contex.lineTo(x,y);
+				contex.moveTo(0,200);
+				contex.lineTo(x,y);						
+				contex.stroke();
+				}
+			}
+			a.onclick=function(event){
+				
+
+					contex.fillRect(0,0,200,200);			
+				var x=event.clientX-200;
+				var y=event.clientY-50;
+				contex.beginPath();
+				contex.moveTo(0,0);
+				contex.lineTo(x,y);
+				contex.moveTo(200,0);
+				contex.lineTo(x,y);
+				contex.moveTo(200,200);
+				contex.lineTo(x,y);
+				contex.moveTo(0,200);
+				contex.lineTo(x,y);						
+				contex.stroke();
+				
+			}
+			a.onmousedown=function(){
+				
+			
+				key=1;	
+				console.log(key);
+			}
+			a.onmouseup=function(){
+				console.log(key);
+				key=0;
+			}
+
+			
+		</script>
+	</body>
+</html>

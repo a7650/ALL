@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/animate.css"/>
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<script src="js/wow.js"></script>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: deepskyblue;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="a">toggle</button>
+		<div id="b" class="wow animated bounce">
+			
+		</div>
+		<div id="successalert">
+			<a href="#" class="close" data-dismiss="alert" >&times</a>
+			<strong>成功</strong>结果是成功的
+		</div>
+		
+		<script>
+			$(function(){
+				new WOW().init();
+				function reAnimated(ele,ani){
+				 	var el=document.querySelector(ele);
+				 	el.classList.remove(ani);
+				 	window.requestAnimationFrame(function(){
+				 		window.requestAnimationFrame(function(){
+				 			el.classList.add(ani);
+				 		}
+				 		);
+				  	});
+				}
+				
+				$("#a").click(function(){
+					reAnimated("#b","bounce");
+				})
+			})
+		</script>
+	</body>
+</html>

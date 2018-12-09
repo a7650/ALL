@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		
+		<script>
+			var Man;
+			Man=function(mes){
+				var words=[];
+				if(this instanceof Man){
+					this.arr=function(o){
+						if(o&&o instanceof Object){
+							for(var i in o){
+								mes[i]=o[i];
+							}
+						}
+						if(o&&typeof o=='string'){
+							if(mes[o]!==undefined){
+								return mes[o];
+							}
+							else{
+								return "用户未输入";
+							}
+						}
+					};
+					this.words=function(w){
+						if(typeof w == 'string'){
+							words.push(w);
+						}						
+					};
+					this.say=function(){
+						var say_str=this.arr("fullname");
+						if(mes["words-emote"]){
+							say_str+=mes["words-emote"];
+						}
+						say_str+=":";
+						if(typeof mes["words-limit"]=='number'){
+							var words2=words.slice(0,mes["words-limit"]);
+						}else{
+							var words2=words;
+						}
+						for(var i=0,len=words2.length;i<len;i++){
+							say_str+=words[i];
+						}
+						return say_str;
+						
+					}
+				}
+				else{
+					return new Man(mes);
+					
+				}
+			}
+			var me=Man({fullname:"小红"});
+			var she=new Man({fullname:"小红"});
+			me.arr({fullname:"小明",gender:"男"});
+			me.fullname="xiaoming";
+			me.gender="nan";
+			she.arr({gender:"女"});
+			me.arr({'words-limit':3,'words-emote':"微笑"});
+			me.words("1");
+			me.words("2");
+			me.words("3");
+			me.words("4");
+			me.words("5");
+			console.log(me.say());
+			
+		</script>
+	</body>
+</html>

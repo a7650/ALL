@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title>
+<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+	var x=0;
+	$("p").click(function(event){
+		$(this).animate({fontSize:"+=5px"});
+		x++;
+		if (x>=2)
+		{
+			$("body").off(event,'p');
+		}
+		});
+		
+		$("span").click(function(event){
+		$(this).animate({fontSize:"+=5px"});
+		});
+	
+});
+</script>
+</head>
+<body>
+
+<script>
+	var obs={};
+	(function(){
+		var a={
+			a:1,
+			b:2
+		}
+		obs["o"]=a;
+		geta=function(){
+			return a.a;
+		}
+	})();
+obs.o.a=33;
+	console.log(obs.o.a);
+	console.log(geta());
+</script>
+</body>
+</html>

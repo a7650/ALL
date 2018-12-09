@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+
+<style>
+	#web-pg{
+		position: fixed;
+		left: 0px;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+		min-zoom:1000px;
+		z-index: -10;
+		background-repeat: no-repeat;
+		background-size: cover;<!-- 使图片完全覆盖背景区域-->
+		background-position: center 0px;
+	}
+
+	 .center-in-center{   
+	 	                   width: 358PX;   
+                           height:170PX;
+	 	                   background: url(图片3.png);
+	 	                   background-size: 100%;  
+position: absolute;
+
+            position: absolute;   
+            top: 50%;   
+            left:50%;   
+             transform: translate(-50%, -50%);  
+        }   
+       fieldset{
+                   width: 358PX;   
+                   height:170PX;
+                   border: 0PX;
+ 	
+                }
+        fieldset a{
+        	      font: '微软雅黑';
+        	      font-size: 12px;
+        	      color: deepskyblue;
+                  text-decoration: none;
+        }
+        .fieldset{
+        	position: absolute;
+        	left:50px;
+        	top: 20px;
+        }
+        .password{
+        	position: absolute;
+        	top:60px;
+       
+        }
+        .dlztdivv{
+        		position: absolute;
+        	top: 95px;
+        }
+        .jzmm{
+        	font: "微软雅黑";
+        	color: black;
+        	font-size: 15px;
+        }
+        .dlzt{
+        	font: "微软雅黑";
+        	font-size: 15px;       	
+        }     
+        .text{
+        	border-left: none;
+        	 border-right: none; 
+        	 border-top: none;/
+        	  border-top: none;
+        }
+        .fhzy{
+        	position:fixed;
+            top:0px;
+            left:0px;
+        }
+        .fw{
+	        position:absolute;
+	        right:10.5%;
+	        top: 0px;
+            }
+         .sx1{
+	        position:absolute;
+	        top: 15px;
+	       left: 89.4%;
+	        width: 1px;
+	        height:20px;
+            background-color: black;
+            }
+         .gy{
+	        position:absolute;
+	        top:0px;
+	        left:89.4%;
+            }
+        a.fw:link,a.fw:visited,a.gy:link,a.gy:visited,a.fhzy:link,a.fhzy:visited{
+        	display: block;
+        	color: black;
+        	font-size: 20px;
+        	font-weight: bold;
+        	font: "微软雅黑";
+        	text-decoration: none;
+        	background-color:transparent;
+        	width:150px;
+        	height: 50px;
+        	text-align: center;
+        	line-height: 50px;
+        }
+        a.fw:hover,a.fw:active,a.gy:hover,a.gy:active,a.fhzy:hover,a.fhzy:active{
+        	color: white;
+        	background-color:black;
+            text-decoration: underline;
+        }               
+        .head{
+
+        	width:100%;
+        	height: 50px;
+        	background-color:white;
+        	position:fixed;
+            top:0px;
+            left: 0px;
+            border-bottom: 1px solid black; 
+            opacity: 0.3;           
+        } 	               	
+        #fk{
+        	width: 150px;
+        	height: 100px;       	
+        	background-color: black;
+        	position: absolute;
+        	top: 50px;
+        	left: 89.4%;
+        }
+        a.A:link,a.A:visited,a.B:link,a.B:visited,a.C:link,a.C:visited{
+        	color: white;
+        	text-decoration: none;
+        	font: "微软雅黑";
+        }
+        a.A:hover,a.A:active,a.B:hover,a.B:active,a.C:hover,a.C:active{
+        	text-decoration: underline;
+        	background-color: red;
+        }
+        
+       }           
+</style>
+	</head>
+	<body>		
+		<div id="web-pg" style="background-image: url(背景.png);">
+			</div>
+		<div class="head">
+			<div>
+				<a href="" class="fhzy">返回主页</a>
+
+			<a href="" class="fw">访问官网</a>
+			<div class="sx1"></div>
+			<a href="index.html" class="gy">关于我们</a>
+			</div>
+						<div id="fk">
+				<a href="" class="A">项目A</a></br></br>
+				<a href="" class="B">项目B</a></br></br>
+				<a href=""  class="C">项目C</a></br></br>
+			</div>
+			</div>
+		<div class="center-in-center">
+		 <form action="/demo/demo_form.asp" method="post">
+            <div class="fieldset">
+            	<fieldset> 
+	         <legend align="center"></legend>
+	         </br>
+	         <input  class="text" type="text" name="账号" placeholder="账号" required="required" >
+             <a href="注册账号.html" target="_self">注册账号</a>
+	          </br>
+	        <div class="password"> <input class="text" type="password" name="密码" placeholder="密码" required="required">
+             <a href="忘记密码.html">忘记密码</a></div>
+	         <div class="dlztdivv"> <select name="登陆状态">
+	 	      <option value="在线" selected="selected">在线</option>
+		      <option value="隐身">隐身</option>
+		      <option value="忙碌">忙碌</option>
+		      <option value="离开">离开</option>
+	          </select>
+	         <span class="jzmm">记住密码</span><input type="radio"  value="记住密码" name="1">  
+	         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    	 <input type="submit" name="sub" value="登陆"></div>
+              </fieldset>
+            </div>
+		   </form>		
+           </div>
+	</body>
+</html>

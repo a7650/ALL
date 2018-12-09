@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<todo :todos="todos">
+				<template slot-scope="slotProps">
+					<span v-if="slotProps.data.isTrue">√</span>
+					<span v-if="!slotProps.data.isTrue">&nbsp;&nbsp;</span>
+					{{slotProps.data.text}}
+				</template>
+			</todo>
+		</div>
+		
+		
+		
+		
+		<script>
+			Vue.component("todo",{
+				props:["todos"],
+				template:`
+				<ul>
+					<li v-for="todo in todos" :key="todo.id">
+						<slot :data="todo">{{todo.text}}</slot>
+					</li>
+				</ul>
+				`
+			})
+			
+			
+			
+			
+			
+			
+			
+			
+			new Vue({
+				el:"#app",
+				data:{
+					todos:[
+						   {text:"A",id:1,isTrue:true},
+					       {text:"B",id:2,isTrue:true},
+					       {text:"C",id:3,isTrue:false},
+					       {text:"D",id:4,isTrue:true}
+					]
+
+				}
+			})
+		</script>
+	</body>
+</html>

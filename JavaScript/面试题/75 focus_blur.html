@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<input type="text" id="input" value="请输入信息" />
+		
+		
+		<script>
+			function input_event(){
+				var input=document.getElementById("input");
+				var value=input.value;
+				input.style.color="blue";
+				input.onfocus=function(){
+					if(input.value==value){
+						input.value="";
+						input.style.color="black";
+					}
+					
+					
+					
+				}
+				input.onblur=function(){
+					if(input.value.length!=0){
+						console.log(1);
+					}
+					else{
+						input.value="请输入信息";
+						input.style.color="blue";
+						console.log(input.value.length);
+					}
+					
+					
+				}
+			}
+			window.onload=input_event();
+		</script>
+	</body>
+</html>

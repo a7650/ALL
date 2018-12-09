@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */
+body,div,dl,dt,dd,ul,li,input,form,a,p,textare,h1,h2,h3,h4,h5{
+	margin:0;
+	padding:0;
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif"
+}
+ul,li,ol{
+	list-style:none;
+}
+a{
+	text-decoration:none;
+	display: block;
+}
+.clearfloat{
+zoom:1;	
+}
+clearfloat:after{
+	display:block;
+	clear:both;
+	content:"";
+	visibility: hidden;
+}
+img{
+	display: block;
+
+}

@@ -1,0 +1,79 @@
+//变量
+@height:@width;
+@width:100px;
+//访问器
+.global_class{
+    .val(@p){
+        font-size: @p;
+    }
+}
+
+//mixin
+.a() {
+    padding-left: 100px;
+}//设置一个a的混合对象，其他属性在用的时候可以直接用   .a  来使用.a()中的样式；
+.myclass {
+    background: #64d9c0;
+    .a;//使用.a（）中的样式
+}
+//混合的命名空间
+#outer(@c:deepskyblue;@b:green) when(@width=100px){//受保护的混合混合对象，只有当width为100px时这个对象才会起作用，
+                                                        //虽然后面的width设置的200px；但此时的width还是100px。
+                                                        //同时这个混合对象也带有参数，不同的参数用分毫隔开，用冒号来设置默认值，
+                                                        //在使用的时候，就像函数的传参一样，直接在对象名称后面的括号里加入参数的值
+                                                        //如果没有传参则会自动使用默认值，使用传参时不用加引号。
+    background: @c;
+    .inner(@b) {
+        color: @b;
+    }
+}
+
+p{
+    #outer;
+    #outer>.inner(red);//如果使用带参数的混合对象内部的某一个属性，应该在这个属性也加一个参数，
+                        //因为在使用这个独立的属性时是按照一个独立的个体来使用的，和所以如果单独使用的话，是接收不到外面的参数的。如这里的.inner
+}
+
+#b{
+    #outer(#dd00d9);//使用混合时 ，混合对象中的所有内容会原封不动的转移，如这里的#outer中的inner类也会起作用。
+}
+
+
+
+.b{
+    background-color: black;
+}
+//模式匹配的混合对象  link——line_59
+#bg_mixin(dark,@color){
+    background: darken(@color,30%);
+}
+#bg_mixin(light,@color){
+    background: lighten(@color,30%);
+}
+
+
+#a{
+    width: @height+100px;//运算
+    height: @width+100px;
+    @width:200px;//重设变量会改变以前设置的样式的值
+    
+    @style: orange, green 30%, #DAA520;
+    background-image: svg-gradient(ellipse, @style);//sug函数
+    h1{
+        color: red;
+        .global_class>.val(50px);//访问命名空间中的属性方法
+    }
+    div{
+        color: green;
+        h3{//嵌套
+        display: inline-block;
+        width: @width+200px;
+            color: deepskyblue;
+            .a;//混合，添加.a的样式
+            &:extend(.b);//扩展，添加.b的样式，和混合相似。
+            &:hover{
+                background-color: black;
+            }
+        }
+    }
+}

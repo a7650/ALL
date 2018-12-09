@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jquery-3.3.1.js"></script>
+	</head>
+	<style>
+		.container_outer{
+			width:700px;
+				height: 200px;
+			border: 1px solid black;
+			position: relative;
+			overflow: hidden;
+		}
+		.head_mes{
+			height: 70px;
+			width: 700px;
+			position: relative;
+			padding-top: 10px;
+		}
+		.head_mes .index span{
+			width: 10px;
+			height: 10px;
+			border-radius: 5px;
+			background-color: grey;
+			float: left;
+			margin-right: 5px;
+		}
+		.head_mes .index .index_cur{
+			background-color:black;
+		}
+		.head_mes>span{
+			position: relative;
+		}
+		.head_mes .left:after{
+			position: absolute;
+			content: "";
+			width: 0;
+			height: 0;
+			padding: 0;
+			top: -5px;
+			left: 10px;
+			border-top: 10px solid transparent;
+			border-bottom:10px solid transparent;
+			border-right: 10px solid black;			
+		}
+		.head_mes .right:after{
+			position: absolute;
+			content: "";
+			width: 0;
+			height: 0;
+			padding: 0;
+			top: -5px;
+			left: 25px;
+			border-top: 10px solid transparent;
+			border-bottom:10px solid transparent;
+			border-left: 10px solid black;		
+		}
+		.body_mes{
+			position: absolute;
+			top: 70px;
+			left: 20px;
+			height: 100px;
+		}
+		.body_mes>div{
+			width: 100px;
+			height: 100px;
+			background-color: deepskyblue;
+			float: left;
+			margin-right: 40px;
+		}
+	</style>
+	<body>
+		
+		
+		<div class="container_outer">
+			<div class="head_mes">
+				<span>图片</span>
+				<div class="index">
+					
+				</div>
+				<span class="left"></span>
+				<span class="right"></span>
+			</div>
+			<div class="body_mes">
+				<div>1</div>
+				<div>2</div>
+				<div>3</div>
+				<div>4</div>
+				<div>5</div>
+				<div>6</div>
+				<div>7</div>
+				<div>8</div>
+				<div>9</div>
+				<div>10</div>
+				<div>11</div>
+				<div>12</div>
+				<div>13</div>
+			</div>
+		</div>
+		<script>
+			$(document).ready(function(){
+				var img_lenght=$(".body_mes div").length;
+				var index_len=Math.ceil(img_lenght/6);
+				var index_span="";
+				for(var i=0;i<index_len;i++){
+					index_span+="<span></span>";
+				}
+				var index_span=$(index_span);
+				$(".index").append(index_span);
+				$(".index span:eq(0)").addClass("index_cur");
+								
+				var inde=1,
+					$body_mes=$(".body_mes");
+				$body_mes.css("width",700*index_len);
+				$(".left").click(function(){
+					if(!$body_mes.is(":animated")){
+						if(inde==1){
+							inde=index_len;
+							$body_mes.animate({"left":-700*(inde-1)+20},500);
+						}
+						else{
+							inde--;
+							$body_mes.animate({"left":-700*(inde-1)+20},500);
+						
+					}
+						$(".index span:nth-child("+inde+")").addClass("index_cur").siblings().removeClass("index_cur");
+					}
+				})
+				$(".right").click(function(){
+					if(!$body_mes.is(":animated")){
+						if(inde==index_len){
+							inde=1;
+							$body_mes.animate({"left":20},500);
+						
+						}
+						else{
+							inde++;
+							$body_mes.animate({"left":-700*(inde-1)+20},500);
+						
+					}
+						$(".index span:nth-child("+inde+")").addClass("index_cur").siblings().removeClass("index_cur");
+					}
+				})
+			})
+			$(function() {
+				$(".body_mes").css("background-color","red");
+			})
+		</script>
+		
+	</body>
+</html>

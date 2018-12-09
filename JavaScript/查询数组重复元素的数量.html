@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function inde(){
+				var a="aaabbbccddee";
+				var b=[];
+				var c={};
+				for(var i=0;i<a.length;i++){
+					if(b.indexOf(a[i])==-1){
+						b.push(a[i]);
+						c[a[i]]=1;
+					}
+					else{
+						c[a[i]]++;
+					}
+				}
+				for(var j in c){
+					console.log(j+":"+c[j]);
+				}
+			}
+			inde();
+		</script>
+	</body>
+</html>

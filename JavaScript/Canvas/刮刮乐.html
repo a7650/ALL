@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#a{
+				position: absolute;
+				left: 0;
+				top:0;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="600" height="600" id="a"></canvas>
+		<img src="../../百度学院/img/page5-2.png" alt="1">
+		
+		
+		<script>
+			var pre_x,pre_y,m=0,m_x,m_y;
+			var a=document.getElementById("a");
+			var contex=a.getContext("2d");
+			contex.fillStyle="black";
+			contex.fillRect(0,0,600,600);	
+			contex.strokeStyle="white";
+			window.onmousemove=function(event){
+				var x=event.clientX;
+				var y=event.clientY;
+				if(m==0){
+					pre_x=x;
+					pre_y=y;	
+					m++;
+				}	
+				if(m==1){
+					m_x=x;
+					m_y=y;
+					m++;
+				}
+				else{
+					contex.beginPath();
+					contex.moveTo(pre_x,pre_y);					
+					contex.quadraticCurveTo(m_x,m_y,x,y);
+					pre_x=m_x;
+					pre_y=m_y;
+					m_x=x;
+					m_y=y;
+				}
+				
+
+			}
+			
+			
+			function clear_yuan(x,y,r,angle,rang){
+				for(var i=0;i<360;i+=angle){
+					for(var j=0;j<r+1;j+=rang){
+						var c_x=j*Math.sin(i*Math.PI/180)+x;
+						var c_y=0-j*Math.cos(i*Math.PI/180)+y;
+						contex.clearRect(c_x,c_y,2,2);
+					}
+				}
+			}
+		</script>
+		
+	</body>
+</html>

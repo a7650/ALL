@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#outerbox{
+				width: 100%;
+				height: 200px;
+				background-color: gray;
+			}
+			#left{
+				float: left;
+				width: 150px;
+				height: 20px;
+				background-color: red;
+				margin-right: 20px;
+			}
+			#center{
+				background-color: red;
+				height: 100%;
+				overflow: hidden;
+			}
+			#right{
+				margin-left: 10px;				
+				float: right;
+				width: 100px;
+				height: 100px;
+				background-color: red;		
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="outerbox">
+			<div id="left">left</div>
+			<div id="right">
+				right
+			</div>
+			<div id="center">
+				低版本IE浏览器有个hasLayout的概念，不过这玩意太老生常谈，而且也过时了，我现在无力再吐槽。总而言之，言而总之，就特性表现而言，很多时候和BFC这个概念很
+			</div>
+			
+		</div>
+	</body>
+</html>

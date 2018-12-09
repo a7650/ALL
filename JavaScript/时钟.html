@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<P id="time"></P>
+		
+		
+		<script>
+			function time(){
+				var curr_time=new Date();
+				var h=curr_time.getHours();
+				var m=curr_time.getMinutes();
+				var s=curr_time.getSeconds();
+				m=markTime(m);
+				s=markTime(s);
+				document.getElementById("time").innerHTML=h+":"+m+":"+s+"</br>";
+				document.getElementById("time").innerHTML+=curr_time.toLocaleString();				
+				setTimeout("time()",1000);
+			}
+			function markTime(x){
+				if(x<10){
+					x="0"+x;
+					return x;
+				}
+				else return x;
+			}
+			window.onload=time();
+		</script>
+		
+		
+	</body>
+</html>

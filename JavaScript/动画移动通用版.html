@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="message">132</div>
+<script>
+    function addLoadEvent(func){
+        var oldonload=window.onload;
+        if(typeof window.onload != 'function') window.onload=func;
+        else{
+            window.onload=function(){
+                oldonload();
+                func();
+            }
+        }
+    }
+    function positionevent() {
+        var elem=document.getElementById("message");
+        elem.style.position="absolute";
+        elem.style.top="100px";
+        elem.style.left="50px";
+        moveMessage("message",200,300,20);
+    }
+
+    function moveMessage(ids,x,y,time) {
+        if (!document.getElementById) return false;
+        if (!document.getElementById(ids)) return false;
+        var elem=document.getElementById(ids);
+        var xpos = parseInt(elem.style.left);
+        var ypos = parseInt(elem.style.top);
+        if (xpos == x && ypos == y){
+            return ture;
+        }
+        if (xpos < x){
+            xpos++;
+        }
+        if (xpos > x){
+            xpos--;
+        }
+        if (ypos < y){
+            ypos++;
+        }
+        if (ypos > y){
+            ypos--;
+        }
+        elem.style.left = xpos+"px";
+        elem.style.top  = ypos+"px";
+        var repeat="moveMessage('"+ids+"',"+x+","+y+","+time+")";
+        movement = setTimeout(repeat,time);
+    }
+    addLoadEvent(positionevent);
+</script>
+</body>
+</html>

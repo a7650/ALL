@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../vue.js"></script>
+		<style>
+			.component-fade-enter-active, .component-fade-leave-active {
+  transition:.5s;
+}
+.component-fade-enter, .component-fade-leave-to
+/* .component-fade-leave-active for below version 2.1.8 */ {
+  opacity: 0;
+}
+		</style>
+	</head>
+	<body>
+		<div id="myt">
+			<button @click="tog">toggle</button>
+			<mytransition message="hello" >
+				
+				<div key="aaa" v-if="sl" @click="con" >123</div>
+				<com1 key="bbb" v-if="sl" message="com-_helaaaa" mes="ua"></com1>
+			</mytransition>
+		</div>
+		
+		
+		
+		
+		
+		
+		<script>
+			Vue.component("mytransition",{
+				template:"<transition-group name='component-fade'  mode='out-in'><slot></slot></transition-group>",
+				data:function(){
+					return {
+						c:122
+					}
+				},
+				methods:{
+					con:function(){
+						console.log(this.a);
+					}
+				}
+			});
+			Vue.component("com1",{
+				props:["message","mes"],
+				template:"<div><h1>com_1 {{message}} {{mes}}</h1></div>"
+			});
+			
+			new Vue({
+				el:"#myt",
+				data:{
+					sl:true,
+					u:"qweq",
+					a:2
+				},
+				methods:{
+					tog:function(){
+						this.sl=!this.sl
+					},
+					con:function(){
+						console.log(this.a);
+					}
+				}
+			})
+			
+		</script>
+	</body>
+</html>

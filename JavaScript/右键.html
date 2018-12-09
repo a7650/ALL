@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+
+ul{
+	display: none;
+	position: absolute;
+	z-index: 99;
+	height: 20px;
+	overflow: hidden;
+	
+}
+ul:hover{
+	height: 145px;
+	transition-duration:  0.3s;
+}
+
+#ul li{
+	list-style: none;
+	width: 60px;
+	height: 30px;
+	background-color: gray;
+	margin: 0;
+	margin-top:1px;
+	text-align: center;
+	line-height: 30px;			
+}
+#ul div{
+	height: 20px;
+	width: 60px;
+	background-color:transparent;
+	
+}
+#ul li a{
+	text-decoration: none;
+	color: white;
+}
+#ul li:hover{
+	background-color: gainsboro;
+}
+#ul li:hover >a{
+	color: black;
+}
+#div{
+	width: 1000px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: deepskyblue;
+}
+
+		</style>
+	</head>
+	<body>
+		<ul id="ul">
+			<div></div>
+			<li> <a href="99乘法表.html">乘法表</a> </li>
+			<li> <a href="图片库.html">图片库</a> </li>
+			<li> <a href="99乘法表.html">乘法表</a> </li>
+			<li> <a href="图片库.html">图片库</a> </li>
+		</ul> 
+
+	<div id="div"></div>
+
+	<script>
+
+
+function right_onclick(){
+	var div=document.getElementById("div");
+	var body=document.getElementsByTagName("body")[0];
+	var ul=document.getElementById("ul");
+	window.oncontextmenu=function(event){
+		event.preventDefault();
+		ul.style.left=(event.clientX-40)+"px";
+		ul.style.top=(event.clientY-20)+"px";
+		ul.style.display="block";
+		
+		
+	}
+	
+	window.onmouseup=function(event){
+		ul.style.display="none";
+		
+		
+	}
+}
+window.onload=function(){
+	right_onclick();
+}
+
+
+
+	</script>
+	</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input type="text" id="t" /><br>
+		<button  onclick="numberOne()" >1</button>
+		<button class="number-button"  onclick="numberTwo()" >2</button>
+		<button class="number-button"  onclick="numberThree()" >3</button>
+		<button class="number-button"  onclick="numberFour()" >4</button>
+		<button class="number-button"  onclick="numberFive()" >5</button>
+		<button class="number-button"  onclick="numberSix()" >6</button>
+		<button class="number-button"  onclick="numberSeven()" >7</button>
+		<button class="number-button"  onclick="numberEight()" >8</button>
+		<button class="number-button"  onclick="numberNine()" >9</button>
+		<button class="number-button"  onclick="numberZero()" >0</button>
+		<br>
+		<button class="jia" onclick="jia()" >+</button>
+		<button class="jian" onclick="jian()">-</button>
+		<button class="cheng" onclick="cheng()">*</button>
+		<button class="chu" onclick="chu()">/</button>
+		<button class="deng" onclick="consequence()">=</button>
+		<p id="jieguo">结果</p>
+		<script>
+			var o="结果", j=0;
+			function numberOne(){
+				input=document.getElementById("t");
+				var old_text=document.getElementById("t").value;
+				var now_text=old_text+"1";
+				input.setAttribute("value",now_text);
+			}
+			function numberTwo(){
+				var old_text=document.getElementById("t").value;				
+				var now_text=old_text+"2";
+				input.setAttribute("value",now_text);
+			}
+			function numberThree(){
+				var old_text=document.getElementById("t").value;			
+				var now_text=old_text+"3";
+				input.setAttribute("value",now_text);
+			}
+			function numberFour(){
+				var old_text=document.getElementById("t").value;			
+				var now_text=old_text+"4";
+				input.setAttribute("value",now_text);
+			}
+			function numberFive(){
+				var old_text=document.getElementById("t").value;				
+				var now_text=old_text+"5";
+				input.setAttribute("value",now_text);
+			}
+			function numberSix(){
+				var old_text=document.getElementById("t").value;			
+				var now_text=old_text+"6";
+				input.setAttribute("value",now_text);
+			}
+			function numberSeven(){
+				var old_text=document.getElementById("t").value;			
+				var now_text=old_text+"7";
+				input.setAttribute("value",now_text);
+			}
+			function numberEight(){
+				var old_text=document.getElementById("t").value;			
+				var now_text=old_text+"8";
+				input.setAttribute("value",now_text);
+			}
+			function numberNine(){
+				var old_text=document.getElementById("t").value;				
+				var now_text=old_text+"8";
+				input.setAttribute("value",now_text);
+			}
+			function numberZero(){
+				var old_text=document.getElementById("t").value;
+				var now_text=old_text+"0";
+				input.setAttribute("value",now_text);
+			}
+			function jia(){
+				var old_text=document.getElementById("t").value;
+				var now_text=old_text+"+";
+				input.setAttribute("value",now_text);
+			}
+			function jian(){
+				var old_text=document.getElementById("t").value;
+				var now_text=old_text+"-";
+				input.setAttribute("value",now_text);
+			}
+			function cheng(){
+				var old_text=document.getElementById("t").value;
+				var now_text=old_text+"*";
+				input.setAttribute("value",now_text);
+			}
+			function chu(){
+				var old_text=document.getElementById("t").value;
+				var now_text=old_text+"/";
+				input.setAttribute("value",now_text);
+			}
+			function firstFunction()
+	{
+		var a=document.getElementById("test").value,b=a.length;
+		alert("您输入的字符串"+a+"长度为"+b);
+	}
+	
+	
+	
+	function consequence(){
+		j++;
+		var x=document.getElementById("t").value;
+		var m=0,n=0;
+		for(var i=0;i<x.length;i++)
+		{
+			if(x[i]>="0"&&x[i]<="9"){
+				m++;
+			}
+			else{
+				var b=i;
+				for(i=i+1;i<x.length;i++)
+				n++;
+			}
+		}
+		var z=0,y=0;
+		for(var l=0;l<x.length;l++)
+		{
+			if(x[l]>="0"&&x[l]<="9"){
+				z=z+x[l]*(Math.pow(10,m-1));
+				m--;
+			}
+			else{
+				for(l=l+1;l<x.length;l++){
+					y=y+x[l]*(Math.pow(10,n-1));
+					n--;
+				}
+				
+			}
+		}
+			
+			     	var conse;
+			     		switch (x[b])
+						{
+						case "+":conse=z+y;break;
+						case "-":conse=z-y;break;
+						case "*":conse=z*y;break;
+						case "/":
+								if(y==0){
+									conse="分母不能为零";
+								}
+								else{
+									conse=z/y;
+								}
+								break;
+						default:break;
+						}
+						input.setAttribute("value","");
+						o=o+"<br/>"+j+":"+" "+conse;
+						document.getElementById("jieguo").innerHTML=o;
+						
+						
+
+}		
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="#one">ONE</a>
+<a href="#two">TWO</a>
+<a href="#three">THREE</a>
+<section id="one">
+    <p>111111111111111111111111111111111111111111111111111</p>
+</section>
+<section id="two"><p>2222222222222222222222222222222222222222222222</p></section>
+<section id="three"><p>333333333333333333333333333333333333333333333</p></section>
+
+
+<script>
+    function addLoadEvent(func){
+        var oldonload=window.onload;
+        if(typeof window.onload != 'function') window.onload=func;
+        else{
+            window.onload=function(){
+                oldonload();
+                func();
+            }
+        }
+    }
+    function showSection(id) {
+        var sections=document.getElementsByTagName("section");
+        for(var i=0;i<sections.length;i++){
+            var sid=sections[i].getAttribute("id");
+            if(id==sid){
+                sections[i].style.display="block";
+
+            }
+            else {
+                sections[i].style.display="none";
+            }
+        }
+    }
+
+    function sectionOn() {   	
+    	var links=document.getElementsByTagName("a");
+        if(links.length==0)return false;
+        
+        
+        for(var i=0;i<links.length;i++){
+        	
+        	(function(num){
+        	        		
+            var sectionID=links[i].getAttribute("href").split("#")[1];
+            document.getElementById(sectionID).style.display="none";
+            
+            
+            links[i].onclick=function () {          
+            	showSection(sectionID);
+            	return false;           	
+            	}
+            
+            })(i);
+            
+            
+            
+        }
+        
+        
+        
+        
+}
+addLoadEvent(sectionOn());
+
+</script>
+
+
+</body>
+</html>

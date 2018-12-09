@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#a{
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="600" height="600" id="a"></canvas>
+		<img src="../../百度学院/img/page5-2.png" alt="1">
+		<script type="text/javascript">
+			var a=document.getElementById("a");
+			var contex=a.getContext("2d");
+			contex.fillStyle="black";
+			contex.fillRect(0,0,600,600);
+			function clear_yuan(x,y,r,angle,rang){
+				
+				for(var i=0;i<360;i+=angle){
+					for(var j=0;j<r+1;j+=rang){
+						c_x=j*Math.sin(i*Math.PI/180);
+						c_y=0-j*Math.cos(i*Math.PI/180);
+						contex.clearRect(c_x+x,c_y+y,2,2);
+					}
+				}
+			}
+		clear_yuan(100,300,50,2,50);
+		clear_yuan(100,300,50,2,45);
+		</script>
+		
+		
+	</body>
+</html>

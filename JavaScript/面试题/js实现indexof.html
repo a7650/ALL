@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			function indexOf(a,b){
+				var index=-1;
+					for(var n=0,len_a=a.length;n<len_a;n++){
+						if(b[0]==a[n]){
+							for(var m=0,len_b=b.length;m<len_b;m++){
+								if(b[m]!==a[n+m]){
+									break;
+								}
+								else{
+									index=n;
+
+								}
+							}
+						}
+						if(index!==-1){
+							break;
+						}
+						
+					}
+					
+					return index;
+			}
+			
+			function indexOf2(a,b){
+				var match=a.match(b);
+				return match.index;
+			}
+			
+			function indexOf3(a,b){
+				return a.search(b);
+			}
+			console.log(indexOf3("asd","d"))
+		</script>
+	</body>
+</html>

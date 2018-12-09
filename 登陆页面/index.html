@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+
+<style>
+	/* 设置背景图片*/
+#web-pg{
+		position: fixed;
+		left: 0px;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+		min-zoom:1000px;
+		z-index: -10;
+		background-repeat: no-repeat;
+		background-size: cover;/* 使图片完全覆盖背景区域*/
+		background-position: center 0px;
+	}
+	/*  ------登陆窗口代码------ */
+	/* 登陆窗口的大小以及位置 网页居中*/
+.center-in-center{   
+ 	                   
+
+                         
+	 	                   background:white;
+	 	                   
+            			   position: absolute;   
+            				top: 50%;   
+            				left:50%;   
+            				transform: translate(-50%, -50%); 
+            				
+	                       
+                           
+	
+ }
+	.center-in-center:hover{
+		 box-shadow:0px 0px 50px black;
+		 height: 300px;
+		 transition: 0.3s;
+          
+          
+	}
+		/* 清除表单边框*/
+fieldset{
+                  border: 0PX;	
+                }
+	/*表单大小 */
+.fieldset{
+       	 width: 358PX;   
+         height:170PX;
+       }
+	/* 账号行的位置*/
+.counter{
+        position: absolute;
+        left:50px;
+        top:20px;
+
+       }
+	/* 密码行的位置*/
+.password{
+       	position: absolute;
+       	left:50px;
+       	top:70px;
+       }   
+	/*表单中超链接的字体 并去掉下划线 */
+fieldset a{
+        	      font: '微软雅黑';
+        	      font-size:17px;
+        	      color: deepskyblue;
+                  text-decoration: none;
+					position: absolute;
+	right: -80px;
+	transition: 0.5s;
+        }
+	/* 超链接hover操作 */
+	
+fieldset a:hover{
+        	color: black;
+        }
+	/* 登陆状态行的字体样式*/
+.dlztdivv{
+	position: absolute;
+	top: 115px;
+	left: 51px;
+	width: 267px;
+        }
+.jzmm{
+        	font: "微软雅黑";
+        	color: black;
+        	font-size: 14px;
+        }
+.dlzt{
+        	font: "微软雅黑";
+        	font-size: 15px;       	
+        }     
+	/* 输入框的边框，字体，底色等*/
+.text{
+        	border-left: none;
+        	border-right:none; 
+        	border-top: none;
+        	border-bottom: solid 1px black;
+        	font-size: 15px;
+        	background-color:whitesmoke;
+	transition:0.2s;
+        }
+.text:focus{
+	border: 1px white solid;
+	box-shadow: 0 0 10px deepskyblue;
+	background-color: white;
+}
+.text:focus+a{
+	right: -90px;
+}
+
+	
+	/*------head栏代码------ */
+/* 固定head栏的位置*/
+.head{
+        	position:absolute;
+        	top:0px;  
+            left: 0px;
+        	width:750px;/*必须设置宽度，为了左右拖动网页时head中的文本不重叠 */
+        	height:50px;
+            background-color: transparent;  /* 设置背景无色 */
+            z-index: 10;
+        } 	
+	/* 设置底部head栏  因为head背景是无色  */
+.under-head{
+        	width: 100%;/* 为了head有像素值的宽度 并且在任何电脑上都是100%的页面，把underhead宽度设置为100%*/
+        	height: 50px;
+        	position:fixed;
+        	top: 0;
+        	left:0px;
+        	background-color: white;
+        	opacity: 0.9;
+        	z-index: -9;
+        }
+	/*一级菜单列表 清除margin和padding 并定位*/
+.head ul{
+	position:relative;
+      margin:0;
+	padding:0;
+       	
+       } 
+	/*一级菜单左浮动*/
+.head ul li{
+        list-style-type: none;
+       	float: left;  
+       }
+	/*竖线的格式位置*/
+.db1{
+	display: inline;
+	width: 2px;
+	height:15px;
+	background-color: black;
+	margin-top: 17.5px;
+}
+.db2{
+	display: inline;
+	width: 2px;
+	height:15px;
+	background-color: black;
+	margin-top: 17.5px;
+}
+	/*一级菜单的超链接格式*/
+.head>ul>li>a{
+	position: relative;
+	display:block;
+	padding: 0px;
+	text-decoration: none;
+	color:black;
+	font: "微软雅黑";
+	font-size: 20px;
+	font-weight: bold;
+	width: 150px;
+    height:35px;
+    text-align: center;     
+    padding-top: 15px;
+    margin-right: 0 px;
+    background-color:transparent;
+	
+}
+	/*二级菜单绝对定位 并隐藏*/
+	.head>ul>li>ul{
+    position:absolute;
+		top: 50px;
+	display:none;
+	}
+	/*清除二级菜单的浮动 */
+	.head>ul>li>ul>li{
+		float:none;
+	}
+	/*二级菜单超链接的格式*/
+		.head>ul>li>ul>li a{
+		font-size:20px;	
+		font:  "微软雅黑";
+		font-weight: normal;
+		color:black;
+		display:block;
+		text-decoration: none;
+		width:150px;
+		height:35px;
+		padding-top:15px;
+		background-color: transparent;
+		text-align: center;	
+		transition: background-color 0.2s ,box-shadow 0.3s;
+	}
+	/*一级菜单hover效果*/
+		.head>ul>li>a:hover{
+		background-color:white;
+		color:deepskyblue;
+			font-size: 22px;
+			box-shadow: 0 0 50px black;
+			transition:height 0.2s,background-color 0.3s,font-size 0.3s;
+		
+	}/*指定的二级li上的hover效果*/
+	.head>ul>.menu:hover>a{
+		height:135px;
+		background-color:white;
+		color:deepskyblue;
+		
+		
+	}
+/*制定的二级li上的hover效果 二级ul出现*/
+	.head>ul>.menu:hover>ul{
+		display:block;
+	}
+	/*二级菜单超链接的hover效果*/
+	.head>ul>li>ul>li>a:hover{
+		background-color:deepskyblue;
+		font-size:22px;
+		box-shadow: 0 0 20px deepskyblue;
+	}
+/*------图片库代码------*/
+	/*容器格式*/
+.picture1{
+	width: 100%;/*使在任何显示器上都能够占据100%的宽度*/
+	height: 50px;/*和head相同高度*/
+    position: absolute;
+    top: 0;
+	min-width: 1000px;
+	/*浏览器缩小窗口限制最小尺寸 不与左边菜单相撞*/
+}
+	/*内容器漂浮*/
+.picture{
+	margin:0;
+	padding: 0;
+    float: right;
+	width: 200px;
+	height: 48px;
+}
+	/*图片容器格式*/
+.picture .bor{
+    width: 45px;
+    height: 46px;
+	margin: 0;
+	padding: 0;
+	border: 1px solid black;
+	float: left;
+	margin-right: 3px;
+	background-color: gainsboro;
+}
+	/*超链接格式*/
+.bor a{
+	display: block;
+	height: 46px;
+	width: 45px;
+	background: transparent;
+	text-decoration: none;
+	color: black;
+	font: "微软雅黑";
+	font-size: 20PX;
+	text-align: center;
+}
+	/*超链接hover效果*/
+.bor a:hover{
+	background-color: deepskyblue;
+}
+.opadiv{
+	position:absolute;
+	top:50px;
+	right: 0;
+}
+#imgstand{
+	margin:0px;
+}
+	/*head加载动画*/
+	.black-head{
+		width: 100%;
+		height: 50px;
+		background-color: black;
+		z-index: 20;
+		position: absolute;
+		top: 0;
+		left: 0px;
+		animation:black-head 0.5s;
+		animation-fill-mode: forwards;
+	}
+	@keyframes black-head{
+		0%{ }
+		100%{
+			background-color: transparent;
+			width: 1px;
+			left: 50%;
+		}
+	
+	}
+
+
+</style>
+
+	</head>
+	<body>
+<!--<div class="black-head">
+	</div>-->
+		<div id="web-pg" style="background-image: url(背景.png);">
+			</div>
+			<div class="under-head"></div>
+		<div class="head">	
+            <ul class="nav">
+	        <li > <a  href=""> 返回主页</a></li>
+	        <li  class="db1"></li>
+	        <li> <a href=""> 访问官网</a></li>
+	        <li class="db2"></li>
+	        <li class="menu"> <a href=""> 关于我们</a>
+				<ul>
+				<li><a href="">项目A</a></li>
+				<li><a href="">项目B</a></li>
+				</ul>
+				
+				</li>
+
+            </ul>
+		</div>
+	<div class="picture1">
+<div class="picture">
+	   <div class="bor">
+			<a  id="Aimg"  onmouseover="imgs()">
+				<img  style="width: 45px; height: 20px; margin: 0;" src="img\A.jpg" title="A" alt="A">
+				A
+			</a>	
+	</div>
+	<div class="bor">
+			<a href="">
+				<img  id="Bimg" style="width: 45px; height: 20px; margin: 0;" src="img/B.jpg" title="A" alt="B" onmouseover="imgs('Bimg')"><img/>
+				B
+			</a>	
+	</div>
+	<div class="bor">
+			<a href="">
+				<img id="Cimg" style="width: 45px; height: 20px; margin: 0;" src="img\C.jpg" title="A" alt="C" onmouseover="imgs('Cimg')">
+				C
+			</a>	
+	</div>
+	<div class="bor" style="margin: 0;">
+			<a href="">
+				<img id="Dimg" style="width: 45px; height: 20px; margin: 0;" src="img\D.png" title="A" alt="D" onmouseover="imgs('Dimg')">
+				D
+			</a>	
+	</div>
+	<div class="bor" style="width: 3px;border: none;margin: 0;">
+				</div>
+</div>
+</div>
+
+		<div class="center-in-center">
+		 <form action="/demo/demo_form.asp" method="post">
+            <div class="fieldset">
+            	<fieldset> 
+	         <legend align="center"></legend>
+	         <div class="counter">
+				 <input  class="text" type="text" name="账号" placeholder="账号" required="required">
+             <a href="注册账号.html" target="_self">注册账号</a>
+            </div>
+	         <div class="password"> 
+	            <input class="text" type="password" name="密码" placeholder="密码" required="required">
+               <a href="忘记密码.html">忘记密码</a>
+	         </div>
+	         <div class="dlztdivv"> <select name="登陆状态">
+	 	      <option value="在线" selected="selected">在线</option>
+		      <option value="隐身">隐身</option>
+		      <option value="忙碌">忙碌</option>
+		      <option value="离开">离开</option>
+	          </select>
+	         <span class="jzmm">记住密码</span><input type="radio"  value="记住密码" name="1">
+	         &nbsp;  &nbsp;&nbsp;
+	    	 <input type="submit" name="sub" value="登陆"></div>
+              </fieldset>
+            </div>
+		   </form>		
+           </div>
+
+<script>
+    function imgs()
+    {
+      document.getElementById("Aimg").setAttribute("color","red");
+
+
+    }
+</script>
+
+
+	</body>
+</html>

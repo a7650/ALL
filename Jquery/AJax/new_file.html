@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../jquery-3.3.1.js"></script>
+		<style>
+			div{
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+		
+		
+		<div id="load"></div>
+		<button>load</button>
+		<div id="restext"></div>
+		<script>
+			$(function(){
+				$("button").click(function(){
+					var back_date=$.ajax({
+						url:"text_html.html",
+						async:false,
+						success:function(date){
+							$("#restext").append(date);
+						}
+					});
+					$("#restext").html(back_date.responseText);
+				});
+				$(document).ajaxStart(function(){
+					$("#load").text("加载中");
+				}).ajaxStop(function(){
+					$("#load").text("加载完成");
+				})
+				
+				
+				
+				
+			})
+		</script>
+	</body>
+</html>

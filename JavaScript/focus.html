@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			p{
+				color: red;
+				font-size: 30px;
+				position: absolute;
+				left: 50%;
+				top: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" name="text1" />
+		<input type="text" name="text2" />
+		<input type="text" name="text3" />
+		<br />
+		<p id="p"></p>
+		<script>
+			function focus(){
+				var focus=document.activeElement.value;
+				var p=document.getElementById("p");
+				if(focus){
+					p.innerHTML=focus;
+				
+				}
+				else{
+					p.innerHTML="";
+				}
+				setTimeout("focus()",10);
+			}
+			window.onload=focus();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js"></script>
+		<script type="text/javascript" src="vue.js"></script>
+	</head>
+	<body>
+		
+		<div id="app" ref="a">
+			<p ref="b">{{match}}</p>
+			<button @click="change">click</button>
+		</div>	
+		
+		
+		
+		<script>
+	app = new Vue({
+        el: "#app",
+        data: {
+				match:"#000"
+        },
+		methods:{
+			change:function(){
+				this.match="asd";
+				setTimeout(function(){
+					console.log(app.$refs.b.innerText);
+				},0);
+			}
+		}
+       	
+	});
+		</script>
+		
+	</body>
+</html>

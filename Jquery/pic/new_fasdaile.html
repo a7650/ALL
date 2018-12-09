@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="jquery-3.3.1.js"></script>
+		<title></title>
+	</head>
+	<style>
+	
+	</style>
+	<body>
+		
+		<input type="checkbox" name="items" value="足球" />足球1
+		<input type="checkbox" name="items" value="足球" />足球2
+		<input type="checkbox" name="items" value="足球" />足球3
+		<input type="checkbox" name="items" value="足球" />足球4
+		<br />
+		<input type="checkbox" id="checkall"  value="全选"/>
+
+		
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#checkall").click(function(){
+					var att=this.checked;
+					$("[name=items]").each(function(){
+						this.checked=att;
+					})
+				})
+				$("[name=items]").click(function(){
+					var flag=true;
+					$("[name=items]").each(function(){
+						if(!this.checked)flag=false;
+					});
+					$("#checkall")[0].checked=flag;
+				})
+			})
+		</script>
+	</body>
+</html>

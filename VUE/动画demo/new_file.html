@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../vue.js"></script>
+		<style>
+	.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity .3s ease;
+}
+.component-fade-enter, .component-fade-leave-to
+/* .component-fade-leave-active for below version 2.1.8 */ {
+  opacity: 0;
+}
+		</style>
+	</head>
+	<body>
+	<div id="com">
+		<button id="com_a" @click="current_com='aa'">com_a</button>
+		<button id="com_b" @click="current_com='bb'">com_b</button>
+		<button id="com_c" @click="current_com='cc'">com_c</button>
+		<transition name="component-fade" mode="out-in" tag="span">
+			<keep-alive>
+			<component :is="current_com"></component>
+		</keep-alive>
+		</transition>
+	</div>
+<script>
+new Vue({
+  el: '#com',
+  data: {
+    current_com:"aa"
+  },
+  components:{
+  	'aa':{
+  		data:function(){
+  			return{
+  				acom:"aaa",
+  				aaa:"aaa",
+  				baa:"baa",
+  				caa:"caa"
+  			}
+  		},
+  		components:{
+  			aaa:{
+  				template:"<div>a_a</div1>"
+  			},
+  			baa:{
+  				template:"<h1>a_b</h1>"
+  			},
+  			caa:{
+  				template:"<h1>a_c</h1>"	
+  			}
+  		},
+  		template:"<div><h1>com_a</h1><ul><li @click='acom=aaa'>a</li><li @click='acom=baa'>b</li><li @click='acom=caa'>c</li></ul><component :is='acom'></component></div>"  		
+  	},
+  	'bb':{
+  		template:"<h1>com_b</h1>"
+  	},
+  	'cc':{
+  		template:"<h1>com_c</h1>"
+  	}
+  }
+  
+})
+</script>
+		</div>
+	</body>
+</html>

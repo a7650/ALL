@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+计算器<input type="text" id="count"/>
+<button type="button" onclick="myCountDeceive()">计算</button>
+<p id="jieguo"></p>
+
+
+
+
+<script>
+    var e=0,n=0,m=0;
+    function myCountDeceive(){
+        e++;
+        var x=document.getElementById("count").value;
+        for(var i=0;i<x.length;i++)
+        {
+            if(x[i]>="0"&&x[i]<="9"){
+                m++;
+            }
+            else{
+                var b=i;
+                for(i=i+1;i<x.length;i++)
+                    n++;
+            }
+        }
+        var z=0,y=0;
+        for(var l=0;l<x.length;l++)
+        {
+            if(x[l]>="0"&&x[l]<="9"){
+                z=z+x[l]*(Math.pow(10,m-1));
+                m--;
+            }
+            else{
+                for(l=l+1;l<x.length;l++){
+                    y=y+x[l]*(Math.pow(10,n-1));
+                    n--;
+                }
+
+            }
+        }
+        var c=document.getElementById("jieguo");
+
+        if(x[b]!="+"&&x[b]!="-"&&x[b]!="*"&&x[b]!="/")
+        {
+            c.innerHTML+="<br/>"+e+":"+x[b]+"不是四则运算的一种";
+
+        }
+        else{
+            var conse;
+            switch (x[b])
+            {
+                case "+":conse=z+y;break;
+                case "-":conse=z-y;break;
+                case "*":conse=z*y;break;
+                case "/":
+                    if(y==0){
+                        conse="分母不能为零";
+                    }
+                    else{
+                        conse=z/y;
+                    }
+                    break;
+                default:break;
+            }
+            c.innerHTML+="<br/>"+e+":"+conse;
+
+        }
+    }
+</script>
+
+
+
+
+
+</body>
+</html>

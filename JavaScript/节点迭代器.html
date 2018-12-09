@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div">
+			<p> 123</p>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+		
+		
+		<script>
+			var filter=function(node){
+				return node.tagName.toLowerCase()=="li"?
+				NodeFilter.FILTER_ACCEPT:
+				NodeFilter.FILTER_SKIP;
+			}
+			var div=document.getElementById("div");
+			var iter=document.createNodeIterator(div,NodeFilter.SHOW_ELEMENT,filter,false);
+			node=iter.nextNode();
+			while(node!=null){
+				console.log(node.firstChild.nodeValue);
+				node=iter.nextNode();
+			}
+			
+		</script>
+		
+	</body>
+</html>

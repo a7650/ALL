@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#tar{
+				width: 100px;
+				height: 100px;
+				background-color: deepskyblue;					
+			}
+			#tar:hover{
+				cursor: pointer;
+			}
+			#container{
+				width: 600px;
+				height: 110px;
+				border: 1px solid black;
+				position: absolute;
+				top: 10px;
+				left: 300px;
+			}
+			#container_outer{
+				width: 600px;
+				height: 110px;
+				position: absolute;
+
+			}
+
+			
+		</style>
+	</head>
+	<body>
+		
+		
+		<div id="container"></div>
+		<div id="tar"></div>
+		<div id="container_outer"></div>
+		<script>
+		//draw函数
+		function draw(){
+			var tar=document.getElementById("tar");
+				tar.style.position="absolute";
+				tar.style.left="300px";
+				tar.style.top="500px";
+			var container=document.getElementById("container_outer");
+				container.style.top="10px";
+				container.style.left="300px";
+			var under_container=document.getElementById("container"),
+			    body=document.getElementsByTagName("body")[0];
+			var c_down=0,
+				parnet_n=0;
+				
+			window.onmousemove=function(event){
+				if(c_down===1){
+					tar.style.top=(event.clientY-p_y)+"px";
+					tar.style.left=(event.clientX-p_x)+"px";					
+				}
+			}
+			tar.onmousedown=function(event){
+				c_down=1;
+				tar.style.boxShadow="0 0 30px rgba(0,0,0,0.3)";
+				tar.style.transform="scale(1.1,1.1)";
+				if(parnet_n==1){
+					body.insertBefore(tar,container);
+					tar.style.left=(parseInt(container.style.left)+10)+"px";
+					tar.style.top=(5+parseInt(container.style.top))+"px";
+					parnet_n=0;
+				}				
+				p_x=event.clientX-parseInt(tar.style.left);
+				p_y=event.clientY-parseInt(tar.style.top);				
+			}
+			tar.onmouseup=function(){
+				event.stopPropagation();
+				c_down=0;						
+				var cur_x=parseInt(tar.style.left),
+				    cur_y=parseInt(tar.style.top),
+				    angel_x= cur_x<300 ? 300-cur_x : cur_x-300,
+				    angel_y= cur_y<500 ? 500-cur_y : cur_y-500,
+				    angel=angel_x/angel_y;
+				moveMessage("tar",300,500,1,angel);
+				tar.style.boxShadow="none";
+				tar.style.transform="scale(0.91,0.91)";				
+			}
+			container.onmouseover=function(){
+				under_container.style.borderColor="red";				
+			}
+			container.onmouseout=function(){
+				under_container.style.borderColor="black";
+			}
+			container.onmouseup=function(event){
+				c_down=0;
+				parnet_n=1;
+				container.appendChild(tar);
+				tar.style.top="5px";
+				tar.style.left="10px"
+				tar.style.boxShadow="none";
+				tar.style.transform="scale(0.91,0.91)";	
+			}			
+		}	
+		
+		//element移动函数
+		function moveMessage(ids,x,y,time,angel) {
+       	 		var elem=document.getElementById(ids);
+       	 		var xpos = parseInt(elem.style.left),
+        		    ypos = parseInt(elem.style.top);
+        		if (xpos == x && ypos == y){
+            		return;
+        		}
+        		if (xpos < x){
+           		 	xpos+=(angel*10);
+            		if(xpos>x)xpos=x;
+        		}
+        		if (xpos > x){
+            		xpos-=(angel*10);
+            		if(xpos<x)xpos=x;
+        		}
+        		if (ypos < y){
+            		ypos+=10;
+            		if(ypos>y)ypos=y;
+        		}
+        		if (ypos > y){
+            		ypos-=10;
+            		if(ypos<y)ypos=y;
+        		}
+        		elem.style.left = xpos+"px";
+        		elem.style.top  = ypos+"px";
+        		var repeat="moveMessage('"+ids+"',"+x+","+y+","+time+","+angel+")";
+        		movement = setTimeout(repeat,time);
+    		}
+		
+		
+		window.onload=function(){
+			draw();
+		}
+		</script>
+		
+	</body>
+</html>

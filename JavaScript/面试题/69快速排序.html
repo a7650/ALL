@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		
+		
+		<script>
+			Object.prototype.res=function(){
+				var a=[];
+				var b=[];
+				var len=this.length;
+				for(var i=0;i<len;){
+					if(this[i]==undefined){
+						break;
+					}
+					if(a.indexOf(this[i])>-1){
+						b.push(this.splice(i,1));
+					}
+					else{
+						a.push(this[i]);
+						i++;
+					}
+				}
+				return b;
+			}
+			var c=[1,2,3,4,4,5,1];
+			console.log(c.res());
+			console.log(c);
+		</script>
+	</body>
+</html>

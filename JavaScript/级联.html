@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+
+		</style>
+	</head>
+	<body>
+		<div id="a"></div>
+		<script>
+	function getByID(id){
+		var target=document.getElementById(id);
+		target.move=function(xpos,ypos){
+			target.style.position="absolute";
+			target.style.left=xpos+"px";
+			target.style.top=ypos+"px";
+			return target;
+		};
+		target.width=function(num){
+			target.style.width=num+"px";
+			return target;
+		};
+		target.height=function(num){
+			target.style.height=num+"px";
+			return target;
+		};
+		target.appendText=function(text){
+			target.innerHTML=text;
+			return target;
+		};
+		target.backgroundColor=function(bcolor){
+			target.style.backgroundColor=bcolor;
+			return target;
+		};
+		target.color=function(color){
+			target.style.color=color;
+		};
+		return target;
+	}
+	getByID("a").move(100,200).width(200).height(100).appendText("aaaaaa").backgroundColor("black").color("white");
+	
+	
+	
+	
+		</script>
+		
+	</body>
+</html>

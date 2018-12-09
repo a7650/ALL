@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../../jquery-3.3.1.js"></script>
+	</head>
+	<body>
+		<input id="username" />
+		<span>记住账号</span>
+		<input type="checkbox" id="memo_username" />
+		
+		
+		<script>
+			$(function(){
+				var cookie_username=localStorage.getItem("username");
+				if(cookie_username){
+					$("#username").val(cookie_username);
+					$("#memo_username")[0].checked=true;
+				}
+				$("#memo_username").click(function(){
+					if(this.checked){
+						localStorage.setItem("username",$("#username").val());
+					}
+					else{
+						localStorage.removeItem("username");
+					}
+				})
+			})
+		</script>
+	</body>
+</html>

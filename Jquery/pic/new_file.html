@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/jscript" src="jquery-3.3.1.js"></script>
+	</head>
+	<style>
+		#diva *{
+			border: 1px solid gray;
+			padding: 20px;
+			display: block;
+			color: black;
+		}
+	</style>
+	<body>
+		<div id="diva">div
+		<div class="a">div.a
+			<span>span</span>
+			<div>
+				div2
+				<span>span2</span>
+			</div>
+		</div>
+		<p class="b">p.b
+			<span>span</span>
+			<span>span</span>
+			<span>span</span>
+			<span>span</span>
+		</p>
+		<p class="b">p.b
+			<span>span</span>
+			<span>span</span>
+			<span>span</span>
+			<span>span</span>
+		</p>
+		<h1>h1</h1>
+		
+		</div>
+		
+
+
+
+
+
+
+<script>
+
+$(document).ready(function(){
+	$("span").click(function(){
+		console.log(this.tagName);
+	});
+
+
+
+
+});
+
+	
+</script>
+
+
+
+
+	</body>
+</html>
+

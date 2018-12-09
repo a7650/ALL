@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript" src="../Jquery/pic/jquery-3.3.1.js"></script>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+	<body>
+	<div id="a">
+	<form>
+		<fieldset>
+			<legend>qwe</legend>
+		<input type="text" />
+		</fieldset>
+		
+	</form>
+	</div>
+	</body>
+	<script>
+		
+//		ul
+	var container=function(id,parent){
+		this.id=id;
+		this.parent=parent;
+		this.init();
+	}
+	container.prototype.init=function(){
+		this.element=document.createElement("ul");
+		this.element.id=this.id;
+	}
+	container.prototype.add=function(child){
+		this.element.appendChild(child.getelement());
+		return this;
+	}
+	container.prototype.getelement=function(){
+		return this.element;
+	}
+	container.prototype.show=function(){
+		this.parent.appendChild(this.element);
+	}
+	
+	
+	//li
+	var item=function(classname){
+		this.classname=classname||'';
+		this.init();
+	}
+	item.prototype.init=function(){
+		this.element=document.createElement("li");
+		this.element.className=this.classname;
+	}
+	item.prototype.add=function(child){
+		this.element.appendChild(child.getelement());		
+		return this;
+	}
+	item.prototype.getelement=function(){
+		return this.element;
+	}
+	
+	
+	//text
+	var item_text=function(texts){
+		this.texts=texts;
+		this.init();
+	}
+	item_text.prototype.init=function(){
+		this.element=document.createTextNode(this.texts);		
+	}
+	item_text.prototype.getelement=function(){
+		return this.element;
+	}
+	
+	var item1=new container("b",document.body);
+	item1.add(new item("one").add(new item_text("111")))
+		 .add(new item("one").add(new item_text("222")))
+		 .add(new item("one").add(new item_text("333"))) 
+		 .show();
+	
+
+//表单
+//form
+var form=function(id,parent){
+	this.id=id;
+	this.parent=parent;
+	this.init();
+}
+form.prototype.init=function(){
+	this.element=document.createElement("form");
+	this.element.id=this.id;
+}
+form.prototype.add=function(child){
+	this.element.appendChild(child.getelement());
+	return this;
+}
+form.prototype.getelement=function(){
+	return this.element;
+}
+form.prototype.show=function(){
+	this.parent.appendChild(this.element);
+}
+
+//fieldsetitem
+var fieldset=function(){
+	this.init();
+}
+fieldset.prototype.init=function(){
+	this.element=document.createElement("fieldset");
+}
+fieldset.prototype.add=function(child){
+	this.element.appendChild(child.getelement());
+		return this;
+}
+fieldset.prototype.getelement=function(){
+	return this.element;
+}
+
+//legend
+var legend=function(texts){
+	this.texts=texts;
+	this.init();
+
+}
+legend.prototype.init=function(){
+	this.element=document.createElement("legend");
+	this.element.innerHTML=this.texts;
+}
+legend.prototype.getelement=function(){
+	return this.element;
+}
+//input
+var input=function(type){
+	this.type=type;
+	this.init();
+}
+input.prototype.init=function(){
+	this.element=document.createElement("input");
+	this.element.type=this.type;
+}
+input.prototype.getelement=function(){
+	return this.element;
+}
+//span
+var span=function(classname,texts){
+	this.classname=classname||'';
+	this.texts=texts;
+	this.init();
+}
+span.prototype.init=function(){
+	this.element=document.createElement("span");
+	this.element.className=this.classname;
+	this.element.innerHTML=this.texts;
+}
+span.prototype.add=function(child){
+	this.element.appendChild(child.getelement());
+	return this;
+}
+span.prototype.getelement=function(){
+	return this.element;
+}
+
+
+var form=new form("fo",document.body);
+form.add(
+	new fieldset().add(new legend("first"))
+				  .add(new input("text"))
+				  .add(new span("span","输入账号"))
+				   .add(new input("text"))
+				  .add(new span("span","输入密码"))
+).show();
+
+
+
+
+
+
+var a={a:1,b:2,c:3,d:4};
+var b=Object.keys(a).filter(function(val){
+	return a[val]>2;
+});
+console.log(b);
+
+
+
+
+
+
+</script>	
+	
+</html>

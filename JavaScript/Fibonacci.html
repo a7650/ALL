@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+var fibonacci=function(){
+	var memo=[0,1];
+	var res=function(n){
+		result=memo[n];
+		if(typeof result!=="number"){
+			result=res(n-1)+res(n-2);
+			memo[n]=result;
+		};
+		return result;
+	}
+	return res;
+	
+}();
+console.log(fibonacci(10));
+
+		</script>
+	</body>
+</html>

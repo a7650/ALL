@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.grid {
+				display: grid;  /*网格容器*/
+				grid-template-columns: 150px auto 150px;/*网格分为3列 左右150px 中间自适应*/
+				grid-template-rows: repeat(3, 100px); /*3行  100px*/
+				grid-gap: 1em;  /*每个网格单元间的间隙为1em*/
+			}
+			
+			header,
+			aside,
+			article,
+			footer {
+				background: #eaeaea;
+				padding: 1em;
+			}
+			
+			header,
+			footer {
+				grid-column: 1 / 4;/*header和footer从第一个列轨道开始,到第四个列轨道结束*/
+			}
+			
+			/*媒體查詢*/
+			@media all and (max-width: 700px) {
+				aside,
+				article {
+					grid-column: 1 / 4;
+				}
+			}
+			/* Demo Specific Styles */
+			
+			body {
+				margin: 0 auto;
+				max-width: 56em;
+				padding: 1em 0;
+			}
+			
+			.grid>* {
+				justify-self:center;
+				algin-self:center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="grid">
+  <header>
+    Header
+  </header>
+
+  <aside class="sidebar-left">
+    Left Sidebar
+  </aside>
+
+  <article>
+    Article
+  </article>
+
+  <aside class="sidebar-right">
+    Right Sidebar
+  </aside>
+  
+  <footer>
+    Footer
+  </footer>
+</div>
+	</body>
+</html>

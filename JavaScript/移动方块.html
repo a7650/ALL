@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#move_box{
+				width: 100px;
+				height: 100px;
+				background-color: black;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="move_box"></div>
+		<a href="验证.html">111</a>
+		
+		<script>
+			
+			
+			var result=0;
+			var a=document.getElementById("a");
+			function position(){
+				var div1=document.getElementById("move_box");
+				div1.style.position="absolute";
+				 div1.style.left="0px";
+				div1.style.top="0px"; 
+			}
+			function move(result){
+				var div=document.getElementById("move_box");
+				 var xpos=parseInt(div.style.left);
+				 var ypos=parseInt(div.style.top);
+				 switch(result){
+				 	case 1:
+				 	xpos--;
+				 	div.style.left=xpos+"px";break;
+				 	case 2:
+				 	ypos--;
+				 	div.style.top=ypos+"px";break;
+				 	case 3:
+				 	xpos++;
+				 	div.style.left=xpos+"px";break;
+				 	case 4:
+				 	ypos++;
+				 	div.style.top=ypos+"px";break;
+				 	
+					
+				 }
+			}
+			function monitor(){
+				if(result!=0){
+					move(result);
+				}
+				setTimeout("monitor()",1);
+			}
+	 document.onkeydown=function(event){
+        	
+        	switch(event.keyCode){
+        		case 37:result=1;break;//left
+        		case 38:result=2;break;//top
+        		case 39:result=3;break;//right
+        		case 40:result=4;break;//buttom
+        		default:result=0;
+        	}
+        }
+	 
+	 
+        document.onkeyup=function(event){
+        	var up = event || window.event || arguments.callee.caller.arguments[0];
+        	switch(up && up.keyCode){
+        		case 37:result=0;break;//left
+        		case 38:result=0;break;//top
+        		case 39:result=0;break;//right
+        		case 40:result=0;break;//buttom
+        		default:result=0;
+        	}
+        }
+window.onload=function(){
+	position();
+	monitor();
+};
+		</script>
+	</body>
+</html>

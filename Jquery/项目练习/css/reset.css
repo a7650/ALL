@@ -1,0 +1,156 @@
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,
+li,pre,form,fieldset,legend,button,input,textarea,th,td{
+	margin:0;
+	padding:0;
+}
+body,button,input,select,textarea{
+	font: 12px/1.5 tahoma,arial,\5b8b\4f53;
+}
+ul,li,ol{list-style:none;}
+a{text-decoration:none;display: block;}
+h1,h2,h3,h4,h5,h6{font-size: 100%;}
+address,cite,dfn,em,var{font-style: normal;}
+code,kbd,pre,samp{font-family: courier new,courier,monospace;}
+small{font-size: 12px;}
+a:hover{text-decoration: underline;}
+sup{vertical-align: text-top;}
+sub{vertical-align: bottom;}
+legend{color: #000;}
+fieldset,img{border: 0}
+button,input,select,textarea{font-size: 100%}
+table{border-collapse: collapse;border-spacing: 0;}
+.clear{clear: both;float: none;height: 0;overflow: hidden;}
+html .hide{display: none;}	
+
+
+
+/*header重用样式*/
+#header{
+	background: url(../images/headerbg.png) repeat-x scroll 0 0 #FFFFFF;
+	height: 105px;
+}
+#header .contWidth{
+	position: relative;
+	height: 105px;
+	width: 990px;
+	margin: 0 auto;
+	z-index: 100;
+}
+#header .logo{
+	float: left;
+	margin: 0 0 0 10px;
+	color: #fff;
+	line-height: 80px;
+}
+
+#header .search{
+	position: absolute;
+	top: 20px;
+	left: 198px;
+}
+
+#skin{
+	float: right;
+	width: 114px;	
+	overflow: hidden;
+	margin-right: -4px;	
+	margin-top: 20px;	
+}
+#skin li{
+	margin-right: 4px;
+	width: 15px;
+	height: 15px;
+	overflow: hidden;
+	display: block;
+	cursor: pointer;
+	float: left;
+	text-indent: -9999px;
+	background-image: url(../images/theme.gif);
+}
+#skin_0{background-position: 0   1px}
+#skin_1{background-position:15px 1px}
+#skin_2{background-position:35px 1px}
+#skin_3{background-position:55px 1px}
+#skin_4{background-position:75px 1px}
+#skin_5{background-position:95px 1px}
+#skin_0.selected{background-position: 0   15px}
+#skin_1.selected{background-position:15px 15px}
+#skin_2.selected{background-position:35px 15px}
+#skin_3.selected{background-position:55px 15px}
+#skin_4.selected{background-position:75px 15px}
+#skin_5.selected{background-position:95px 15px}
+
+.mainNav{
+	position: absolute;
+	width: 990px;
+	height: 37px;
+	top: 68px;
+	left: 0;
+	line-height: 37px;
+	z-index: 100;
+	background-color: #4A4A4A;
+}
+
+.mainNav .nav{
+	float: left;
+	margin-left: 25px;
+}
+
+.mainNav ul li{
+	float: left;
+	margin-right: 4px;
+	position: relative;
+	z-index: 100;
+}
+.mainNav ul li>a{
+	display: block;
+	color: #fff;
+	padding: 0 8px;
+	font-weight: 700;
+	font-size: 14px;
+}
+
+.jnNav{
+	background: #fff;
+	border: 1px solid #b1b1b1;
+	border-top: 0;
+	overflow: hidden;
+	position: absolute;
+	top: 37  px;
+	left: 0;
+	width: 474px;
+	display: none;
+}
+
+.jnNav .subitem{
+	float: left;
+	height: auto !important;
+	min-height: 100px;
+	padding: 10px 12px;
+	width: 450px;
+
+}
+.jnNav .subitem dl{
+	float: left;
+	border-top: 1px dashed #c4c4c4;
+	overflow: hidden;
+	padding: 10px 12px;
+}
+.jnNav .subitem dl dt{
+	float: left;
+	width: 76px;
+}
+.jnNav .subitem dl dd{
+	float: left;
+	width: 300px;
+}
+.jnNav .subitem dl dd>em{
+	float: left;
+	margin-right: 10px;
+}
+
+.mainNav li:hover >.jnNav{
+	display: block;
+}
+
+

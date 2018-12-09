@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#a{
+				width: 100px;
+				height: 100px;
+				background-color: deeppink;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="a">
+			
+		</div>
+		<script>
+			var div=document.getElementById("a");
+			div.style.position="absolute";
+			div.style.top="200px";
+			var ypos=parseInt(div.style.top);
+			window.onresize=function(){
+				ypos++;
+				div.style.top=ypos+"px";
+			};
+		</script>
+	</body>
+</html>

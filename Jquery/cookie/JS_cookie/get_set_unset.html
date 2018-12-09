@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../../jquery-3.3.1.js"></script>
+	</head>
+	<body>
+		<input id="username" />
+		<span>记住账号</span>
+		<input type="checkbox" id="memo_username" />
+		
+		
+		
+		
+		
+		
+		<script>
+			var cookieUtil={
+				get:function(name){
+					var cookiename=encodeURIComponent(name)+"=",
+						cookiestar=document.cookie.indexOf(";",cookiename),
+						cookievalue="n";
+						console.log(document.cookie);
+					console.log(cookiestar);
+					if(cookiestar>-1){
+						console.log(">-1")
+						cookieend=document.cookie.indexOf(";",cookiestar);
+						if(cookie==-1){
+							cookieend=document.cookie.length;
+						}
+						cookievalue=decodeURIComponent(document.cookie.substring(cookiestar+cookiename.length,cookieend))
+					}
+					return cookievalue;
+				},
+				set:function(name,value,options){
+					var cookietext=encodeURIComponent(name)+"="+encodeURIComponent(value);
+					if(options){
+						console.log("opions");
+						if(options.expires){
+							console.log("expires");
+							cookietext+=";expires="+options.expires.toGMTString;
+						}
+						if(options.path){
+							console.log("path");
+							cookietext+=";path="+options.path;
+						}
+						if(options.domain){
+							cookietext+=";domain="+options.domain;
+						}
+						if(options.secure){
+							cookietext+=";secure";
+						}
+					}
+					document.cookie=cookietext;
+					console.log("set");
+				},
+				unset:function(name,Path){
+					this.set(name,null,{path:Path,expires:new Date(0)});
+				}
+			}
+			
+			
+			
+			$(function(){
+				var cookiename="username";
+				var cookie_username=cookieUtil.get(cookiename);
+				console.log(cookie_username);
+				if(cookie_username){
+					console.log("加载缓存");
+					$("#username").val(cookie_username);
+					$("#memo_username")[0].checked=true;
+					
+				}
+				
+				$("#memo_username").click(function(){
+					if(this.checked){
+						cookieUtil.set("uesrname",$("#username").val(),{path:'/',expires:new Date("January 1, 2019")});
+						console.log(document.cookie);
+					}
+					else{
+						cookieUtil.unset("username",'/');
+					}
+				})
+			})
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

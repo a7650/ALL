@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#a{
+				width: 100px;
+				height: 100px;
+				background-color: deepskyblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="a"></div>
+		
+		<script>
+			Object.prototype.setPosition=function(x,y){
+				this.style.position="absolute";
+				this.style.left=x+"px";
+				this.style.top=y+"px";
+				return this;
+			}
+			document.getElementById("a").setPosition(100,200);
+		</script>
+	</body>
+</html>

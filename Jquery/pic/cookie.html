@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jquery-3.3.1.js"></script>
+		<script type="text/javascript" src="jquery.cookie.js"></script>
+		<link id="change_c"  rel="stylesheet" href=""/>
+	</head>
+	<style>
+		#a div{
+			width: 10px;
+			height: 10px;
+			float: left;
+			margin-right: 10px;		
+			position: relative;
+		}
+		#a{
+			width: 40px;
+			height: 20px;
+			background-color: gray;
+		}
+		#red{
+			background-color: red;
+		}
+		#blue{
+			background-color: deepskyblue;
+		}
+		.selected:after{
+			content: "√";
+			position: absolute;
+			top:-3px ;
+			left: 0;
+		}
+	</style>
+	<body>
+		<div id="a">
+			<div id="red"></div>
+			<div id="blue"></div>
+		</div>
+		
+		
+		
+		
+		<form>
+			<input id="username" />
+			<span>记住账号</span>
+			<input type="checkbox" id="memo_username" />
+			<br />
+			<input id="password" />
+			<span>记住密码</span>
+			<input type="checkbox" id="memo_password" />
+		</form>
+		
+		
+		<script>
+			$(function(){
+				//加载账号密码缓存
+				var cookieuap=["username","password"];
+				$.each(cookieuap, function(inde,value) {
+					if($.cookie(value)){
+						cookie_uap(value);
+					}
+				});			
+				function cookie_uap(value){
+					$("#"+value).val($.cookie(value));
+					$("#memo_"+value)[0].checked=true;
+				}
+				
+				//记住账号和记住密码click			
+				$("#memo_username").click(function(){
+					if(this.checked){
+						$.cookie('username',$("#username").val(),{path:'/',expires:10});
+					}
+					else{
+						$.cookie('username',null,{path:'/',expires:-1});
+					}
+				});
+				$("#memo_password").click(function(){
+					if(this.checked){
+						$.cookie('password',$("#password").val(),{path:'/',expires:10});
+					}
+					else{
+						$.cookie('password',null,{path:'/',expires:-1});
+					}
+				})
+				
+				
+				//主题选项事件
+				$("#a div").click(function(){
+					var id=this.id;
+					switch_skin(id);
+				})
+				
+				//主题缓存
+				var cookie_skin=$.cookie("mySkin");
+				if(cookie_skin){
+					switch_skin(cookie_skin);
+				}
+				
+				//更改css函数
+				function switch_skin(value){
+					$("#"+value).addClass("selected").siblings().removeClass("selected");
+					$("#change_c").attr("href",value+'.css');
+					$.cookie('mySkin',value,{path:'/',expires:10});				
+				}
+		})
+		</script>
+		
+	</body>
+</html>

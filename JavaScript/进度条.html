@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #loading{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0;
+            background-color:deepskyblue;
+            z-index:10;
+        }
+        #out-container{
+            position: absolute;
+            width: 300px;
+            height: 10px;
+            background-color: #FFFFFF;
+            top: 50%;
+            margin-top: -5px;
+            left: 50%;
+            margin-left: -150px;
+        }
+        #inner-container{
+            position: absolute;
+            width: 1px;
+            height: 10px;
+            background-color: deeppink;
+
+        }
+        #precent{
+            margin-left: 145px;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+
+<img id="imgs" src="img/1.jpg" alt="1">
+
+<div id="loading">
+    <div id="out-container">
+        <div id="inner-container"></div>
+        <p id="precent">1%</p>
+    </div>
+
+</div>
+
+<script>
+    function addLoadEvent(func){
+        var oldonload=window.onload;
+        if(typeof window.onload != 'function') window.onload=func;
+        else{
+            window.onload=function(){
+                oldonload();
+                func();
+            }
+        }
+    }
+    function loadPosition() {
+        var  streak=document.getElementById("inner-container");
+        streak.style.width="1px";
+        streak.style.left="0px";
+        var loading=document.getElementById("loading");
+        loading.style.display="block";
+        var img=document.getElementById("imgs");
+        img.style.opacity="0.1";
+    }
+    function loadMove(){
+        var streak=document.getElementById("inner-container");
+        var  xpos=parseInt(streak.style.width);
+        if(xpos==300){
+            return false;
+        }
+        xpos++;
+        streak.style.width=xpos+"px";
+        setTimeout("loadMove()",4);
+    }
+    var p=1;
+    function precents() {
+        var precent=document.getElementById("precent");
+        if(p==100)return false;
+        p++;
+        precent.innerHTML=p+"%";
+        setTimeout("precents()",11);
+
+    }
+    function loadingFade(){
+        var loading=document.getElementById("loading");
+        loading.style.display="none";
+    }
+    function delay(){
+        setTimeout("loadingFade()",2000);
+        setTimeout("Img()",2000);
+    }
+    function Img(){
+        var img=document.getElementById("imgs");
+        var  opas=parseFloat(img.style.opacity);
+        if(opas==1) return false;
+        opas+=0.1;
+        img.style.opacity=opas;
+        setTimeout("Img()",50);
+    }
+
+
+
+    addLoadEvent(loadPosition());
+    addLoadEvent(loadMove());
+    addLoadEvent(precents());
+    addLoadEvent(delay());
+
+</script>
+
+
+</body>
+</html>

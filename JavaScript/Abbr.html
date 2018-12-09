@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #abbrhead{
+            color: #000;
+            font-size: 30px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+<abbr title="aaaa">a</abbr>
+<abbr title="bbbb">b</abbr>
+<abbr title="cccc">c</abbr>
+<abbr title="dddd">d</abbr>
+
+
+
+
+<script>
+    function  abbrr() {
+        var eabbr=document.getElementsByTagName("abbr");
+        var defs=[];
+       for(var i=0;i<eabbr.length;i++){
+           var tit=eabbr[i].firstChild.nodeValue;
+           var txt=eabbr[i].getAttribute("title");
+           defs[tit]=txt;
+       }
+       var dlist=document.createElement("dl");
+        for(tit in defs){
+           var dtitle=document.createElement("dt");
+           var dttext=document.createTextNode(tit);
+           dtitle.appendChild(dttext);
+           var dtext=document.createElement("dd");
+           var ddtext=document.createTextNode(defs[tit]);
+           dtext.appendChild(ddtext);
+           dlist.appendChild(dtitle);
+           dlist.appendChild(dtext);
+        }
+        var head=document.createElement("p");
+        head.setAttribute("id","abbrhead");
+        var pext=document.createTextNode("Attributions");
+        head.appendChild(pext);
+        document.body.appendChild(head);
+        document.body.appendChild(dlist);
+
+
+    }
+    window.onload=abbrr();
+</script>
+
+
+</body>
+</html>

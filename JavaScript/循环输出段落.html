@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			var x,y=0,m;
+		</script>
+	</head>
+	
+	<body>
+		<div>
+		<p>1</p>
+		<p>2</p>
+		<p>3</p>
+		<p>4</p>
+		<p>5</p>
+		<p>6</p>
+		<p>7</p>
+		<p id="ba">8</p>
+		<p >a</p>
+		<p id="targetelement">0</p>
+		<input type="text" name="asda" id="teat" />
+		<button type="button" onclick="insertAfter('ba')">on</button>
+		<br/>
+		</div>
+		<div id="a" title="hello">Hello World</div>
+		<script>
+		
+		var z=document.getElementsByTagName("p");
+		var t=z.length;
+		document.write("本页共有"+t+"个段落"+"<br/>");
+		var y=0;
+		for(x=0;x<t;x++)
+		{
+			y++;
+			var m=z[x].firstChild.nodeValue;
+			document.write("第"+y+"个段落为:"+m+"<br/>");
+		}
+		
+		
+		var aac;
+aac=document.getElementsById("a");
+alert(aac.getAttribute("title"));
+		
+		
+		
+		
+//封装insertAfter
+function insertAfter(ids){
+	var text=document.getElementById("teat").value;
+	var parent=document.getElementById(ids).parentNode;
+	var target=document.getElementById(ids);
+	var news=document.createElement("p");
+	var newstext=document.createTextNode(text);
+	news.appendChild(newstext);
+	if(target==parent.lastChild){
+		parent.appendChild(news);	
+	}
+	else{
+				parent.insertBefore(news,target.nextSibling);
+			}
+}
+
+
+		</script>
+	</body>
+</html>

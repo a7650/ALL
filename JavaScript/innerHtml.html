@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="a"></div>
+		<script type="text/javascript">
+			var values=["a","b","c","d"],
+			    texts="";
+			for(var i=0;i<values.length;i++){
+				texts+="<li>"+values[i]+"</li>"
+			}
+			document.getElementById("a").innerHTML="<ul>"+texts+"</ul>";
+		</script>
+	</body>
+</html>

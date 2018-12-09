@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            border: 1px solid #000000;
+            float: left;
+        }
+        td{
+        border: 1px #000000 solid;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <td>1</td><td>2</td><td>3</td>
+    </tr>
+    <tr>
+        <td>1</td><td>2</td><td>3</td>
+    </tr>
+    <tr>
+        <td>1</td><td>2</td><td>3</td>
+    </tr>
+    <tr>
+        <td>1</td><td>2</td><td>3</td>
+    </tr>
+    <tr>
+        <td>1</td><td>2</td><td>3</td>
+    </tr>
+</table>
+
+
+<table>
+    <tr>
+        <td>1</td><td>2</td><td>3</td>
+    </tr>
+    <tr>
+        <td>1</td><td>2</td><td>3</td>
+    </tr>
+    <tr>
+        <td>1</td><td>2</td><td>3</td>
+    </tr>
+    <tr>
+        <td>1</td><td>2</td><td>3</td>
+    </tr>
+    <tr>
+        <td>1</td><td>2</td><td>3</td>
+    </tr>
+</table>
+<script>
+
+
+        var table = document.getElementsByTagName("table");
+        var odd,row;
+        for(var i=0;i<table.length;i++){
+             odd = 1;
+             row = table[i].getElementsByTagName("tr");
+            for(var j=0;j<row.length;j++){
+                if(odd==1){
+                    row[j].style.backgroundColor="blue";
+                    odd=2;
+                }
+                else{
+                    odd=1;
+                }
+            }
+        }
+
+
+</script>
+
+
+</body>
+</html>

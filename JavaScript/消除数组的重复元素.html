@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="a" />
+		<input type="button" id="but" value="onclick" />
+		<script type="text/javascript">
+			function arrr(){
+				
+					var text=document.getElementById("a").value;
+					var b=text.match(/\d+/g);
+					var c=[];
+					for(var i=0;i<b.length;i++){
+						if(c.indexOf(b[i])==-1){
+							c.push(b[i]);
+						}
+					}
+					console.log(c);				
+			}
+			function bind_click(){
+				document.onclick=function(event){
+					if(event.target.id=="but"){
+						arrr();
+					}
+				}
+			}
+			bind_click();
+		</script>
+	</body>
+</html>

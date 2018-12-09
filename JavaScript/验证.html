@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			var name="asd";
+			var a={
+				name:"qwe",
+				name2:this.name,
+				getname:()=>{
+					console.log(this.name);
+				}
+			}
+			
+			a.getname();
+			console.log(a.name2);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,274 @@
+
+/*主体部分*/
+#content{
+	width: 990px;
+	margin: 0 auto;
+	position: relative;
+	clear: left;
+}
+.janeshop{
+	height: 560px;
+	padding: 10px 0;
+}
+#jnCatalog{
+	float: left;
+	width: 187px;
+	height: 560px;
+	margin: 0 11px 0 0;
+	overflow: hidden;
+}
+#jnImgroll{
+	float: left;
+	height: 320px;
+	width: 550px;
+	margin: 0 11px 0 0;
+	overflow: hidden;
+	position: relative;
+}
+#jnNotice{	
+	float: left;
+	height: 321px;
+	width: 230px;
+	overflow: hidden;
+}
+#jnBrand{
+	float: left;
+	height: 230px;
+	width: 790px;
+	margin: 10px 0 0;
+	overflow: hidden;
+}
+#jnCatalog h2{
+	height: 30px;
+	line-height: 30px;
+	color: #fff;
+	font-size: 12px;
+	background-color: #6e6e6e;
+	text-indent: 13px;
+}
+.jnCatainfo{
+	border: 1px solid #6e6e6e;
+	border-top: 0;
+	height: 524px;
+	width: 175px;
+	overflow: hidden;
+	padding:5px 0px 0px 10px;
+}
+.jnCatainfo h3{
+	border-bottom: 1px solid #eeeeee;
+	height: 24px;
+	line-height: 24px;
+	width: 164px;
+}
+.jnCatainfo ul{
+	float: left;
+	padding: 0 2px 8px;
+}
+.jnCatainfo ul li{
+	float: left;
+	color: #aeadae;
+	height: 24px;
+	line-height: 24px;
+	width: 79px;
+	overflow: hidden;
+	position: relative;
+}
+
+.jnCatainfo li a{
+	color: #444444;
+}
+
+.jnCatainfo li a.promoted{
+	color: #f9044e;
+}
+.jnCatainfo li a:hover{
+	color: #008cD7;
+	text-decoration: none;
+}
+.jnCatainfo li .hot{
+	background: url(../images/hot.gif);
+	height: 16px;
+	width: 21px;
+	position: absolute;
+	top: 0;
+}
+
+/*图片轮播图*/
+
+#JS_imgWrap img{
+	display: none;
+}
+#jnImgroll>div{
+	width: 550px;
+	height: 42px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+#jnImgroll>div a{
+	float: left;
+	width: 79px;
+	height: 32px;
+	padding: 5px 15px;
+	margin-right: 1px;
+	color: #fff;
+	background-color: rgba(0,0,0,.7);
+}
+#jnImgroll>div a em{
+	display: block;
+	text-align:center;
+}
+#jnImgroll>div a em:nth-child(1){
+	width: 79px;
+	height: 16px;
+	font-style: normal;
+	overflow: hidden;
+}
+#jnImgroll>div a em:nth-child(2){
+	width: 79px;
+	height: 16px;
+}
+#jnImgroll>div a.chos{
+	background:url(../images/adindex.gif) no-repeat center 39px #37a7d7;
+	color: #ffffff;	
+}
+
+
+/*Notice*/
+#jnMiaosha{
+	width: 230px;
+	height: 176px;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+#jnNoticeInfo{
+	width: 228px;
+	height: 133px;
+	border:1px solid #DFDFDF;
+	overflow: hidden;
+}
+#jnNoticeInfo h2{
+	width: 228px;
+	height: 23px;
+	line-height: 23px;
+	border-bottom: 1px solid #dfdfdf;
+	text-indent: 12px;
+}
+#jnNoticeInfo ul{
+	height: 100px;
+	width: 216px;
+	padding:4px 0 5px 12px;
+}
+#jnNoticeInfo ul li{
+	width: 216px;
+	height: 20px;
+	line-height:20px;
+}
+#jnNoticeInfo ul li a{
+	color: #6e6e6e;
+}
+#jnNoticeInfo ul li a:hover{
+	color:  #008cD7;
+	text-decoration: none;
+}
+
+/*底部推荐*/
+#jnBrandTab{
+	width: 790px;
+	height: 29px;
+	line-height: 29x;
+	border-bottom: 1px solid #D4D0D0;
+	position:relative;
+}
+#jnBrandTab h2{
+	height: 29px;
+	position: absolute;
+	left: 0;
+	line-height: 29px;
+
+}
+#jnBrandTab ul{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+#jnBrandTab li{
+	float: left;
+	margin-right: 10px;
+	position: relative;
+}
+#jnBrandTab li a{
+	width: 24px;
+	height: 20px;
+	line-height: 20px;
+	color: #000000;
+	background-color: #D4D0D0;
+	padding: 0 10px;
+}
+#jnBrandTab .chos a{
+	background:#F41875;
+}
+.chos:after{
+	content: "";
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	top: 20px;
+	left: 17px;
+	width: 0;
+	height: 0;
+	border-left:5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid #F41875;
+}
+
+/*推荐列表*/
+#jnBrandContent{
+	width: 790px;
+	height: 188px;
+	overflow: hidden;		
+	margin: 8px 5px 0 5px;
+	position: relative;
+}
+#jnBrandList{
+	width: 3200px;
+	height: 188px;
+	position: absolute;
+	left: 0;
+}
+#jnBrandList ul li{
+	float: left;
+	margin:0 5px;	
+}
+#jnBrandList ul li>a{
+width: 188px;
+height: 185px;
+}
+#jnBrandList ul li>a:nth-child(1){
+	width: 188px;
+	height: 185px;
+	background:url(../images/zoom.gif);
+	background-color: #ffffff;
+	background-repeat: no-repeat;
+	opacity: 0.6;
+	position: absolute;
+	bottom: 0;
+	display: none;
+	background-position:50%,50%;
+}
+#jnBrandList span{
+position: absolute;
+bottom: 0;
+width: 183px;
+height: 24px;
+background-color: #efefef;
+line-height: 24px;
+text-align: center;
+}
+#jnBrandList span a{
+	color: #000000;
+}
+
+
+

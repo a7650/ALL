@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		table{
+			border-collapse: collapse;
+			padding: 10px;;
+			margin-top: 370px;
+			margin-left: -10px;
+		}
+		td{
+			text-align: center;
+			
+		}
+		tr:nth-child(odd){
+			background-color: gainsboro;
+		}
+		.first_list{
+			background-color: darkgrey;
+		}
+		#product{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 300px;
+			height: 25px;
+			background-color: gray;
+		}
+		#region{
+			position: absolute;
+			top: 25px;
+			left: 0;
+			width:300px;
+			height: 25px;
+			background-color: gainsboro;
+		}
+		input{
+			margin-right: 10px;
+		}
+		#chart_1{
+			width: 600px;
+			height: 300px;
+			border: 1px solid black;
+			position: absolute;
+			top: 60px;
+			left: 0;
+		}
+		#canvas_1{
+			position: absolute;
+			top: 60px;
+			left: 0;
+		}
+		tr:hover{
+			background-color:deepskyblue;
+			cursor: pointer;
+		}
+	</style>
+	<body>
+		
+		
+		<div id="chart_1"></div>
+		<table id="tabl" border="1px"></table>
+		<canvas id="canvas_1" width="600" height="300"></canvas>
+		
+		<script src="data.js"></script>
+		<script src="basic.js"></script>
+		<script src="数据可视化.js"></script>
+		<script src="表格生成.js"></script>
+		
+		
+		
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{
+				width: 50px;
+				height: 50px;
+				background-color: deepskyblue;	
+				position: absolute;	
+				visibility: hidden;		
+			}
+			#b{
+				width: 1000px;
+				height: 1000px;
+				background-color: gray;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<div id="b"></div>
+		
+		
+		<script>
+			window.name="www";
+var t={
+	name:"jack",
+	color:"white",
+	th: function(){
+		 var name="hhhh";
+		 console.log(this.name);
+		c();
+	}
+}
+var x={
+	name:"xxx"
+}
+function a(){
+	var name="aaa";
+		return function(){
+			console.log(this.name);	
+	};
+}
+function c(){
+	console.log(this.name);
+}
+t.th();
+
+		</script>
+	</body>
+</html>

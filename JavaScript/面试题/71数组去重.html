@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script>
+	Array.prototype.distinct=function(){
+		var result=[];
+		for(var i=0;i<this.length;i++){
+			for(var j=i+1;j<this.length;){
+				if(this[i]===this[j]){
+					result.push(this.splice(j,1)[0]);
+				}
+				else{
+					j++;
+				}
+			}
+		}
+		return result;
+	}
+alert(['a','b','b','b','c',,'b','b','d','b','a','e'].distinct());
+
+		</script>
+	</body>
+</html>

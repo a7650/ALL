@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #container{
+            position: relative;
+            overflow: hidden;
+            width: 100px;
+            height: 100px;
+
+        }
+    </style>
+</head>
+<body>
+<h1>PREVIEW-CONTENT</h1>
+<ul id="content">
+    <li><a href="">page-1</a></li>
+    <li><a href="">page-2</a></li>
+    <li><a href="">page-3</a></li>
+    <li><a href="">page-4</a></li>
+</ul>
+
+<div id="container">
+    <img src="img/content.png" alt="1234" id="prepicture">
+</div>
+
+
+
+<script>
+
+
+
+
+    function positionevent() {
+       var prepicture= document.getElementById("prepicture");
+       prepicture.style.position="absolute";
+       prepicture.style.left="0px";
+       prepicture.style.top="0px";
+       var list=document.getElementById("content");
+       var links=list.getElementsByTagName("a");
+
+       for(var i=0;i<links.length;i++){
+
+               links[i].onmouseout=function(){
+                   this.style.color="black";
+               }
+               links[i].xpo=i*(-100);
+               links[i].onmouseover=function () {
+                   this.style.color="blue";
+                   moveMessage("prepicture",this.xpo,0,1);
+
+               }
+           }
+       }
+
+    function moveMessage(ids,x,y,time) {
+        if (!document.getElementById) return false;
+        if (!document.getElementById(ids)) return false;
+        var elem=document.getElementById(ids);
+        if (elem.movement)clearTimeout(elem.movement);
+        var xpos = parseInt(elem.style.left);
+        var ypos = parseInt(elem.style.top);
+        if (xpos == x && ypos == y){
+            return false;
+        }
+        if (xpos < x){
+            xpos+=10;
+        }
+        if (xpos > x){
+            xpos-=10;
+        }
+        if (ypos < y){
+            ypos+=10;
+        }
+        if (ypos > y){
+            ypos-=10;
+        }
+        elem.style.left = xpos+"px";
+        elem.style.top  = ypos+"px";
+        var repeat="moveMessage('"+ids+"',"+x+","+y+","+time+")";
+        elem.movement = setTimeout(repeat,time);
+    }
+    window.onload=function () {
+        positionevent();
+    }
+</script>
+
+</body>
+</html>

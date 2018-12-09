@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    
+    <style>
+    	#input{
+    		width: 300px;
+    		height: 35px;
+    		border: 1px dodgerblue solid;
+    		font-size: 15px;
+    	}
+    	#search_button{
+    		width: 80px;
+    		height: 35px;
+    		background-color: dodgerblue;
+    		border: none;
+    		margin-left: 15px;
+    		color: white;
+    		cursor: pointer;
+    		
+    	}
+    	.search_container{
+    		position: relative;
+    		width: 400px;
+    		margin: 0 auto;
+    		margin-top:50px;
+    	}
+    	.title{
+    		font-size: 50px;
+    		color: #000000;
+    		font-family: arial;
+    		margin: 0;
+    		padding: 0;
+    		text-align: center;
+    		margin-top: 150px;
+    	}
+    </style>
+    
+</head>
+<body>
+	<p class="title">百度一下 你就知道</p>
+	<div class="search_container"> 
+		<input id="input"  / ><button id="search_button"  >百度一下</button>
+	</div>
+
+
+
+
+<script>
+	var uri="https://www.baidu.com/s?tn=80035161_2_dg&wd=";
+	function bind(){
+			var button=document.getElementById("search_button");
+			button.onclick=function(){
+			var search_content=document.getElementById("input").value;
+			var search_contenturi=uri+search_content;
+			var search_contentURI=encodeURI(search_contenturi);
+			window.open(search_contentURI,"_self");
+		}
+			button.onmouseover=function(){
+			button.style.backgroundColor="deepskyblue";
+		}
+			button.onmouseout=function(){
+			button.style.backgroundColor="dodgerblue";
+		}
+	}
+	 document.onkeydown=function(event){
+     		var e = event || window.event || arguments.callee.caller.arguments[0];
+     		if((e && e.keyCode)==13){
+     		var button=document.getElementById("search_button");
+     		button.style.backgroundColor="deepskyblue";
+     		var search_content=document.getElementById("input").value;
+			var search_contenturi=uri+search_content;
+			var search_contentURI=encodeURI(search_contenturi);
+			window.open(search_contentURI,"_self");			
+     }	 	 
+	 }
+	
+window.onload=bind();
+</script>
+
+</body>
+</html>

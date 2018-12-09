@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <script type="text/javascript">
+    	
+   		document.addEventListener('plusready', function(){
+   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+   			
+   		});
+   		var e=0,g="结果",h=1,j=1;
+    </script>
+    <style>
+    	body{
+    		padding: 0;
+    	}
+    	#bg{
+    		width: 100%;
+    		height: 100%;
+    		background: deepskyblue;
+    		position: absolute;
+    		z-index: -10;
+    		margin: 0;
+    		padding: 0;
+    		top: 0;
+    		left: 0;
+    	}
+    	.imgss{
+    		border: 1px red solid;
+    	}
+    	.one{
+    		width: 100px;
+    		height: 100px;
+    		border: 1px black solid;
+    		background-color: gray;
+    		color: white;
+    	}
+    </style>
+</head>
+<body>
+<div id="bg"><div id="p1">111</div></div>
+检测字符长度<input type="text" name="account" id="test" />
+<button type="button" onclick="firstFunction()">click</button></br>
+计算器<input type="text" id="count"/>
+<button type="button" onclick="myCountDeceive()">计算</button>
+<p id="jieguo"></p>
+
+<button  type="button" onclick="imgs()" > 换一张</button>
+<button  type="button" onclick="bgs()" > 换背景</button>
+<div class="one" onmousedown="mOver(this)" onmouseout="mOut()" >123</div>
+<div class="imgss" ><img id="imgg" src="img/1.jpg" /></div>
+<input type="text"  name="account" class="account" placeholder="denis@getcraftwork.com" required="required"
+				   onmousedown="account_active(this)">
+
+<script>
+	person=new Object;
+
+
+	function firstFunction()
+	{
+		var a=document.getElementById("test").value,b=a.length;
+		alert("您输入的字符串"+a+"长度为"+b);
+	}
+	function myCountDeceive(){
+		e++;
+		var x=document.getElementById("count").value;
+		for(var i=0;i<x.length;i++)
+		{
+			if(x[i]>="0"&&x[i]<="9"){
+				m++;
+			}
+			else{
+				var b=i;
+				for(i=i+1;i<x.length;i++)
+				n++;
+			}
+		}
+		var z=0,y=0;
+		for(var l=0;l<x.length;l++)
+		{
+			if(x[l]>="0"&&x[l]<="9"){
+				z=z+x[l]*(Math.pow(10,m-1));
+				m--;
+			}
+			else{
+				for(l=l+1;l<x.length;l++){
+					y=y+x[l]*(Math.pow(10,n-1));
+					n--;
+				}
+				
+			}
+		}
+			var c=document.getElementById("jieguo");
+			
+			if(x[b]!="+"&&x[b]!="-"&&x[b]!="*"&&x[b]!="/") 
+			{
+			     c.innerHTML+="<br/>"+e+":"+x[b]+"不是四则运算的一种";
+
+			    }
+			     else{
+			     	var conse;
+			     		switch (x[b])
+						{
+						case "+":conse=z+y;break;
+						case "-":conse=z-y;break;
+						case "*":conse=z*y;break;
+						case "/":
+								if(y==0){
+									conse="分母不能为零";
+								}
+								else{
+									conse=z/y;
+								}
+								break;
+						default:break;
+						}
+						c.innerHTML+="<br/>"+e+":"+conse;
+
+			     }		
+	}
+	 function imgs(){
+		h++;
+		if(h==4){
+			h=h-3;
+			document.getElementById("imgg").src="img/1.jpg";
+		}
+		else{
+				switch(h)
+				{
+				case 1:document.getElementById("imgg").src="img/1.jpg";break;
+				case 2:document.getElementById("imgg").src="img/2.jpg";break;
+				case 3:document.getElementById("imgg").src="img/3.jpg";break;
+				}
+			}
+		}
+		
+	function bgs(){
+		j++;
+		if(j==3){
+			j=j-2;
+			document.getElementById("bg").style.background="deepskyblue";
+			
+		}
+		else{
+			switch(j)
+			{
+				case 1:document.getElementById("bg").style.background="deepskyblue";break;
+				case 2:document.getElementById("bg").style.background="transparent";break;
+				Document.getElementsByTagName()
+				document.getElementsByTagName()
+			}
+		}
+		
+	}
+		function mOver(obj){
+		obj.innerHTML="1234";
+	}
+var po=document.getElementById("p1");
+po.parentNode.removeChild(po);
+
+function account_active(act){
+	var act=document.getElementsByClassName("accouunt");
+	var placeholder=act.getAttribute(placeholder);
+	placeholder.setAttribute("placeholder","123 ");
+}
+
+
+
+</script>
+</body>
+</html>

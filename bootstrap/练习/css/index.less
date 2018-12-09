@@ -1,0 +1,122 @@
+@themeColor:#ea0c3c;
+body{
+    padding-top: 70px;
+}
+.header-nav{
+   
+}
+
+
+
+.navbar-brand{
+    width: 80px;
+    background: url(../img/logo.png) no-repeat;
+    background-position: center center;
+    background-size: 50%;
+
+}
+.items-button{
+    padding: 0;
+}
+.side-bar{
+    padding: 0;
+    .list-group-item{
+        margin-top: 3px;
+        width: 100%;
+        border: none;
+        border-radius: 3px;
+        &:hover:not(.active){
+            background-color:lighten(@themeColor,40%);
+        }
+    }
+    .active{
+        background-color:@themeColor;
+        &:hover{
+            background:@themeColor;
+        }
+    }
+}
+.newslist {
+    padding: 0;
+    img{
+        max-width: 100%;
+    }
+    li{
+        overflow: auto;
+        list-style: none;
+        padding: 20px 0;
+        border-bottom: 1px solid #e5e5e5;
+        &:first-child{
+            padding-top: 0;
+        }
+        .news-title{
+            &:hover>a{
+                color: deepskyblue;
+                cursor: pointer;
+                text-decoration: none;
+            }
+            a{
+                color: black;
+                line-height: 1.5;
+                
+            }
+        }
+        .author-face{
+            display: inline-block;
+            width: 17px;
+            height: 17px;
+        }
+        .news-title{
+            margin-bottom: 20px;
+            margin-top: 0;
+        }
+        .news-author span{
+           height: 17px;
+           line-height: 17px;
+           color: #777;
+        }
+    }
+
+}
+@media screen and (max-width: 600px) {
+    .newslist h3 {
+        font-size: 16px;
+    }
+}
+
+.side-bar-card{
+    padding: 20px 0;
+    background:rgba(0,0,0,.05);
+    &.flag{
+        margin-top: 20px;
+        img{
+            max-width: 100%;
+            margin-top:15px;
+        }
+        margin-bottom: 15px;
+    }
+    .card-title{
+        font-weight: bold;
+        margin-left: 10px;
+    }
+    ul{
+        padding: 0;
+    }
+    li{
+        list-style: none;
+        padding: 0 10px;
+        a{
+            color: #000;
+                .title{
+                    
+                }
+                .desc{
+                    color: #b9b9b9;
+                }
+        }
+        &:hover{
+            background: rgba(0,0,0,.1);
+        }
+    }
+}
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p id="elem"> </p>
+
+
+
+
+<script>
+
+   function  delaytime(n) {
+if(n>0){
+    document.getElementById("elem").innerHTML=n;
+    n--;
+    delay = setTimeout("delaytime("+n+")",1000);
+}
+else{
+    alert("TIME IS OVER");
+}
+
+
+
+   }
+   window.onload=function () {
+       setTimeout("delaytime("+10+")",3000);
+
+   };
+</script>
+
+
+
+
+</body>
+</html>

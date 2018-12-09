@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .out-container{
+            width:650px;
+            height: 350px;
+            position: relative;
+            top: 100px;
+            margin: 0 auto;
+            border: 1px solid gray;
+            overflow: hidden;
+        }
+        #inner-container{
+            position: absolute;
+            height: 350px;
+            width: 3900px;
+
+        }
+        #inner-container a{
+            float: left;
+
+        }
+        #indicate{
+            position:absolute;
+            top: 470px;
+            left: 50%;
+            width: 110px;
+            margin-left: -55px;
+
+
+        }
+        #indicate ul{
+            margin: 0;
+            padding: 0;
+        }
+        #indicate li{
+            margin: 0;
+            margin-left: 10px;
+            float: left;
+            list-style: none;
+            widows: 10px;
+            width: 10px;
+            border-radius: 5px;
+            border:1px solid #000000;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="out-container">
+    <div id="inner-container" >
+        <a href="" ><img src="img/pict1.bmp" alt="1"></a>
+        <a href="" ><img src="img/pict2.bmp" alt="2"></a>
+        <a href="" ><img src="img/pict3.bmp" alt="3"></a>
+        <a href="" ><img src="img/pict4.bmp" alt="4"></a>
+        <a href="" ><img src="img/pict5.bmp" alt="5"></a>
+        <a href="" ><img src="img/pict1.bmp" alt="6"></a>
+    </div>
+
+</div>
+<div id="indicate">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</div>
+
+<script>
+    function addLoadEvent(func){
+        var oldonload=window.onload;
+        if(typeof window.onload != 'function') window.onload=func;
+        else{
+            window.onload=function(){
+                oldonload();
+                func();
+            }
+        }
+    }
+    var x=0 , y=1;
+    function pictposition() {
+        pict=document.getElementById("inner-container");
+        pict.style.left="0px";
+        pict.onmouseover=function () {
+            y=0;
+        }
+        pict.onmouseout=function () {
+            y=1;
+            if(pict.dela)clearTimeout(pict.dela);
+            if(pict.delayT)clearTimeout(pict.delayT);
+            pict.dela=setTimeout(function () {
+                actionmove();
+            },5000);
+        }
+        var indicate=document.getElementById("indicate");
+        var links=indicate.getElementsByTagName("li");
+        for(var i=0;i<links.length;i++){
+            links[i].style.backgroundColor="white";
+        }
+    }
+        function moveEvent(x_fin){
+        var elem=document.getElementById("inner-container");
+        if(elem.move)clearTimeout(elem.move);
+        var xpos=parseInt(elem.style.left);
+        if (xpos==x_fin){
+            return;
+        }
+        else{
+            xpos-=25;
+            elem.style.left=xpos+"px";
+        }
+        elem.move=setTimeout("moveEvent("+x_fin+")",5);
+}
+    function index(){
+        var elem=document.getElementById("inner-container");
+        var links=document.getElementById("indicate").getElementsByTagName("li");
+        if(x==5){
+            x=0;
+            elem.style.left=0+"px";
+        }
+        x++;
+        if(x==5){
+            links[4].style.backgroundColor="white";
+            links[0].style.backgroundColor="red";
+        }
+        else {
+            links[x].style.backgroundColor = "red";
+            links[x - 1].style.backgroundColor = "white";
+        }
+        moveEvent(-x*650);
+}
+
+    function actionmove(){
+        if (y==0)return false;
+        index();
+        pict.delayT=setTimeout("actionmove()",5000);
+}
+     function dianJ(){
+        var links=document.getElementById("indicate").getElementsByTagName("li");
+        var elem=document.getElementById("inner-container");
+       
+        for(var i=0;i<5;i++){
+        	(function(num){
+        		links[i].onclick=function(){
+        			if(pict.delayT)clearTimeout(pict.delayT);
+        			if(pict.delatOn)clearTimeout(pict.delatOn);
+        			pict.delatOn=setTimeout("actionmove()",5000);
+					links[x].style.backgroundColor="white";										
+					links[num].style.backgroundColor="red";
+					elem.style.left=((-650)*num)+"px";
+					x=num;        		
+				}				
+        	})(i);
+      
+        }
+     }
+      addLoadEvent(pictposition());
+         addLoadEvent(actionmove());
+        addLoadEvent(dianJ());
+       </script>
+
+
+
+</body>
+</html>

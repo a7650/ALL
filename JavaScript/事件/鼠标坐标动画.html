@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#qiang{
+				position: absolute;
+				top: 0;
+				left: 0;
+
+				background-repeat: no-repeat;
+				
+			}
+			#zidan{
+				position: absolute;
+				width: 600px;
+				height: 600px;
+				background-repeat: no-repeat;
+			}
+			#a{
+				color: white;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="qiang.jpg" alt="qiang" id="qiang" />
+		<img src="zidan.png" alt="zidan" id="zidan" />
+		<div id="a"> </div>
+		
+		<script>
+			var bowserx=window.innerWidth/2;
+			var bowsery=window.innerHeight/2;
+			var body=document.getElementsByTagName("body")[0];
+			var zidan=document.getElementById("zidan");
+			var qiang=document.getElementById("qiang");
+			var a=document.getElementById("a");
+			zidan.style.left="300px";
+			zidan.style.top="100px";
+			body.onmousemove=function(event){
+				var mouse_x=event.clientX-bowserx;
+				var mouse_y=-(event.clientY-bowsery);
+				var move_x=parseInt((mouse_x/bowserx)*50);
+				var move_y=parseInt((mouse_y/bowsery)*50);
+				
+				xpos_zidan=600-move_x;
+				ypos_zidan=200+move_y;
+				zidan.style.left=xpos_zidan+"px";
+				zidan.style.top=ypos_zidan+"px";
+				
+				xpos_qiang=move_x;
+				ypos_qiang=-move_y;
+				qiang.style.left=xpos_qiang+"px";
+				qiang.style.top=ypos_qiang+"px";
+				
+				
+				
+			}
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

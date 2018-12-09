@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+
+
+<script>
+	var Observer=(function(){
+		var handers={};
+		return {
+			regist:function(type,fn){
+				if(handers[type]==undefined){
+					handers[type]=[fn];
+				}
+				else{
+					handers[type].push(fn);
+				}
+			},
+			fire:
+				function(type,event){
+					if(handers[type]==undefined){
+						return;
+					}
+					var len=handers[type].length;
+					for(var i=0;i<len;i++){
+						handers[type][i](event);
+					}
+				},
+			remove:function(type,fn){
+				if(handers[type] instanceof Array){
+					if(fn==undefined){
+						handers[type]=undefined;
+					}
+					else{
+						len=handers[type].length;
+						for(var i=0;i<len;i++){
+							handers[type][i]===fn&&hander[type].splice(i,1);
+						}
+					}
+				}
+			}
+
+			
+
+		}
+
+	})();
+
+	Observer.regist('a',function(e){console.log("aevent"+e.a)});
+	Observer.fire('a',{a:1});
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

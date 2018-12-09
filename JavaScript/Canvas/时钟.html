@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#clock{
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#h_index{
+				position: absolute;
+				left: 0;
+				top:0;
+			}
+			#m_index{
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#s_index{
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="clock" width="200" height="200">表盘</canvas>
+		<canvas id="h_index" width="200" height="200">时针</canvas>
+		<canvas id="m_index" width="200" height="200" >分针</canvas>
+		<canvas id="s_index" width="200" height="200">秒针</canvas>
+		<script type="text/javascript">
+			var clock=document.getElementById("clock"),
+				h_index=document.getElementById("h_index"),
+				m_index=document.getElementById("m_index"),
+				s_index=document.getElementById("s_index");
+			var clock_context=clock.getContext("2d"),
+				h_context=h_index.getContext("2d"),
+				m_context=m_index.getContext("2d"),
+				s_context=s_index.getContext("2d");
+				
+				//表盘
+				clock_context.beginPath();
+				clock_context.arc(100,100,100,0,2*Math.PI,false);
+				clock_context.strokeStyle="black";
+				clock_context.fillStyle="deepskyblue";
+				clock_context.fill();
+				clock_context.stroke();
+				
+				//刻度
+				clock_context.font="bold 15px A";
+				clock_context.textAlign="center";
+				clock_context.textBaseline="middle";
+				clock_context.strokeText("12",100,10);
+				clock_context.strokeText("3",190,100);
+				clock_context.strokeText("6",100,190);
+				clock_context.strokeText("9",10,100);
+				
+				
+				function hms(){
+					var time=new Date();
+					var h=time.getHours();
+					var m=time.getMinutes();
+					var s=time.getSeconds();
+										
+					h_context.clearRect(0,0,200,200);
+					var h_x=100+60*Math.cos((3-h)*(Math.PI)/6),
+						h_y=100-60*Math.sin((3-h)*(Math.PI)/6);	
+					h_context.beginPath();
+					h_context.moveTo(100,100);
+					h_context.lineTo(h_x,h_y);
+					h_context.strokeStyle="black";
+					h_context.stroke();
+					
+					m_context.clearRect(0,0,200,200);
+					var m_x=100+90*Math.cos((15-m)*(Math.PI)/30),
+						m_y=100-90*Math.sin((15-m)*(Math.PI)/30);
+					m_context.beginPath();
+					m_context.moveTo(100,100);
+					m_context.lineTo(m_x,m_y);
+					m_context.strokeStyle="black";
+					m_context.stroke();
+					
+					s_context.clearRect(0,0,200,200);
+					var s_x=100+90*Math.cos((15-s)*(Math.PI)/30),
+						s_y=100-90*Math.sin((15-s)*(Math.PI)/30);
+					s_context.beginPath();
+					s_context.moveTo(100,100);
+					s_context.lineTo(s_x,s_y);
+					s_context.strokeStyle="white";
+					s_context.stroke();
+										
+					setTimeout("hms()",1000);
+				}
+				hms();
+		</script>
+		
+	</body>
+</html>

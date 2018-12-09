@@ -1,0 +1,302 @@
+@charset "utf-8";
+/* CSS Document */
+.public-header{
+	height: 110px;
+	
+	
+}
+.public-container{
+	position: relative;
+	width: 1100px;
+	margin:0 auto;
+}
+.public-footer{
+	height: 318px;
+	background-color: #3d3d3d;
+	padding-top: 100px;
+	width: 100%;
+	
+}
+.head-logo{
+	margin-top: 40px;
+	background: url(../IMG/logo.png);
+	background-size: 100%;
+	float:left;
+	width: 182px;
+	height: 54px;
+}
+.head-logo a{
+	height: 54px;
+}
+.head-nav ul{
+	margin-top: 44px;
+	float: right;
+}
+.head-nav ul li{
+	float: left;
+	margin-left: 50px;
+}
+.head-nav ul li a{
+	color: black;
+	font-size: 20px;
+}
+.public-footer .foot-col{
+	float: left;
+	font-size: 16px;
+	margin-right: 60px;
+	color:#fff;
+	width: 230px;
+	line-height: 1.8;
+	
+}
+.public-footer .foot-col:last-child{
+	margin-right: 0;
+}
+
+.public-footer .foot-col-logo{
+	width: 182px;
+	height: 54px;
+	background:url( ../IMG/logo.png );
+	margin-top: -20px;
+	margin-bottom: 10px;
+}
+.index-banner{
+	position:relative;
+}
+.index-banner-bg{
+	height: 570px;
+	width: 1100px;
+	background:url(../IMG/banner-bg.jpg);
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+.index-banner-text{
+	position: absolute;
+	top:200px;
+	left:50%;
+    margin-left: -388px;
+	
+	
+}
+.index-banner-text .text-logo{
+	width: 776px;
+	height: 177px;
+}
+.index-banner-text .text-logo p{
+	display: block;
+	color: white;
+	font-size: 100px;
+	position: absolute;
+	top: 50%;
+	left:50%;
+	transform: translate(-50%,-50%)
+}
+.index-banner-text .text{
+	color:white;
+	font-size: 22px;
+	text-align: center;
+	margin-top: 17px;
+}
+
+.index-banner-text .text .line{
+	display: inline-block;
+	width: 40px;
+	border-top: 1px solid white;
+	vertical-align: middle;
+}
+.index-banner-text .text .left{
+	margin-right: 10px;
+}
+.index-banner-text .text .right{
+	margin-left: 10px;
+}
+.index-menu{
+	position: relative;
+	border-top: 4px solid #f34949;
+}
+.index-menu-tips{
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -78px;
+	height:75px ;
+	width: 156px;
+	background-color: #f34949;
+	text-align: center;
+	color: white;
+	line-height: 65px;	
+}
+.index-menu-tips:after{
+	position: absolute;
+	content:"";
+	left: 0;
+	bottom: 0;
+	padding: 0;
+    height: 0;
+	width: 0;
+	border-right: 78px solid transparent;
+	border-left: 78px solid transparent;
+	border-bottom: 10px solid white;
+}
+.index-menu .menu-list{
+	margin-top: 150px;
+	overflow: hidden;
+}
+.index-menu .menu-list ul{
+width: 1160px;
+}
+.index-menu .menu-item{
+	float: left;
+	width: 520px;
+	margin-right:60px;
+	margin-bottom: 56px;
+}
+
+.index-menu .menu-item .menu-title,.index-menu .menu-item .line{
+	float: left;
+
+}
+.index-menu .menu-item .menu-price{
+	float:right;
+}
+
+.index-menu .menu-item .menu-comment{
+	width: 200px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.index-menu .menu-item .menu-line{
+	width: 250px;
+	display: inline-block;
+	border-top: 1px solid black;
+	margin-left: 20px;
+	margin-bottom: 5px
+	
+}
+.index-menu .menu-item .menu-title .menu-comment{
+	color: gray;
+}
+.index-menu .menu-item .menu-comment:hover{
+	overflow: visible;
+	color: black;
+}
+.index-menu .menu-more{
+	display: block;
+	border: 1px solid gray;
+	margin: 0 auto;
+	width: 80px;
+	height: 30px;	
+}
+
+.index-menu .menu-more .more{
+	font-size: 14px;
+	text-align: left;
+	display: inline;
+	float: left;
+	margin-top: 6px;
+	margin-left: 2px;
+	color: gray;
+	user-select: none;
+}
+.index-menu .menu-more .more-line{
+	display: inline-block;
+	width: 1px;
+	height: 14px;
+	background-color: gray;
+	float: left;
+	margin-top: 8px;
+	margin-left: 8px
+}
+.index-menu .menu-more .sanjiao{
+	float: left;
+	height: 0;
+	width: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid gray;
+	border-bottom: 10px solid transparent;
+	margin-left: 7px;
+	margin-top: 10px;
+}
+.index-menu .menu-more:hover{
+	background-color: #f34949;
+	border: 1px solid transparent;
+}
+.index-menu .menu-more:hover>.more{
+	color: white;
+}
+.index-menu .menu-more:hover>.more-line{
+	background-color: white;
+}
+.index-menu .menu-more:hover>.sanjiao{
+	border-top: 10px solid white;
+}
+.index-menu .menu-de{
+	height:1px;
+	width: 80px;
+	background-color:transparent;
+	transition:height 0.5s;
+	margin: 0 auto;
+}
+.index-menu .menu-de .more-container{
+	width: 1400px;
+	margin: 0 auto;
+}
+.index-menu .menu-de .menu-de-more{
+	margin-top: 50px;
+	margin-right: 160px;
+	float: left;
+	color: white;
+	display: none;
+	transition-duration: height 0.5s;
+}
+.index-menu .menu-more:hover+.menu-de{
+	height: 300px;
+	width: 100%;
+	background-color:#000;
+}
+.index-menu .menu-more:hover +.menu-de .menu-de-more{
+	display: block;
+}
+.index-menu .menu-de:hover{
+	height: 300px;
+	width: 100%;
+	background-color:#f34949;
+}
+.index-menu .menu-de:hover .menu-de-more{
+	display: block;
+}
+
+
+.index-panel{
+	margin-top: 30px;
+}
+.index-panel>ul{
+	margin-top: 20px;
+	width: 1200px;
+	height: 300px;
+}
+.index-panel>ul>li{
+	float: left;
+}
+.index-panel>ul>li>.panel{
+	width: 200px;
+	height: 200px;
+	margin-right: 100px;
+	background-color: #F34949;
+}
+.panel-line{
+	height: 1px;
+	background-color: #f34949;
+	margin-top: 30px;
+}
+
+
+
+
+
+
+
+

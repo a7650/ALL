@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			function SuperType(name){
+				this.name=name;
+				this.color=["red","blue","white"];
+			}
+			SuperType.prototype.sayName=function(){
+				console.log(this.name);
+			}
+			function SubType(name,age){
+				SuperType.call(this,name);
+				this.age=age;
+			}
+			SubType.prototype= new SuperType();
+			SubType.prototype.constructor=SubType;
+			SubType.prototype.sayAge=function(){
+				console.log(this.age);
+			}
+			
+			
+			var Jack=new SubType("Jack",26);
+			Jack.color.push("black");
+			Jack.sayName();
+			Jack.sayAge();
+			console.log(Jack.color);
+			var Jone=new SubType("Jone",20);
+			Jone.sayName();
+			Jone.sayAge();
+			console.log(Jone.color);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

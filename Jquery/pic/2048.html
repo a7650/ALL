@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="jquery-3.3.1.js"></script>
+    <style>
+    
+    #a {
+        width: 220px;
+        height: 220px;
+        padding: 5px 0 0 5px;
+        background-color: rgb(187,173,160);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -110px 0 0 -110px;
+        border-radius: 5px;
+    }
+    #a ul {
+        margin:0 0 5px 0;
+        padding: 0;
+        width: 220px;
+        height: 50px;       
+    }
+     ul li {
+        list-style: none;
+        margin:0 5px 0 0;
+        padding: 0;
+        float: left;
+        width: 50px;
+        height: 50px;
+        font-size: 40px;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 5px;
+        background:#CCC0B2;
+    }  
+    #b{
+    	width: 300px;
+    	height: 100px;
+    	background-color: #F26179;
+    	color: #ECECEC;
+    	font-size: 60px;
+    	text-align: center;
+    	line-height: 100px;
+    	position: absolute;
+    	top: 50%;
+    	left: 50%;
+    	margin: -50px 0 0 -150px;
+    	display: none;
+    }
+    #c{
+    	width: 100px;
+    	height: 50px;
+    	background-color: #000;
+    	color: #FFFFFF;
+    	font-size: 20px;
+    	text-align: center;
+    	line-height: 50px;
+    	border-radius: 10px;
+    	position: absolute;
+    	top: 50%;
+    	left: 50%;
+    	margin: 60px 0 0 -50px;  
+    	cursor: pointer;	
+    	display: none;
+    }
+    #c:hover{
+    	
+    	background: #FFFFFF;
+    	color: #000000;
+    }
+    .c2{
+    	background:#eee4da;
+    }
+    .c4{
+        background:#F0D4B7;
+    }
+   .c8{
+    	background:#f26179;
+    }
+    .c16{
+    	background:#f59563;
+    }
+    .c32{
+    	background:#f67c5f;
+    }
+    .c64{
+    	background:#f65e36;   	
+    }
+    .c128{
+    	background:#edcf72;
+    	font-size: 25px;
+    }
+    .c256{
+    	background:#edcc61;
+    	font-size: 25px;
+    }
+    .c512{
+    	background:#9c0;
+    	font-size: 25px;
+    }
+    .c1024{
+    	background:#3365a5;
+    	font-size: 20px;
+    }
+    .c2048{
+    	background:#09c;
+    	font-size: 20px;
+    }
+    .c4096{
+    	background:#a6bc;
+    	font-size: 20px;
+    }
+    .c8192{
+    	background:#93c;
+    	font-size: 20px;
+    }   
+    </style>
+</head>
+
+<body>
+   
+    <div id="a">
+        <ul>
+            <li id="00"></li>
+            <li id="01"></li>
+            <li id="02"></li>
+            <li id="03"></li>
+        </ul>
+        <ul>
+            <li id="10"></li>
+            <li id="11"></li>
+            <li id="12"></li>
+            <li id="13"></li>
+        </ul>
+        <ul>
+            <li id="20"></li>
+            <li id="21"></li>
+            <li id="22"></li>
+            <li id="23"></li>
+        </ul>
+        <ul>
+            <li id="30"></li>
+            <li id="31"></li>
+            <li id="32"></li>
+            <li id="33"></li>
+        </ul>
+    </div>
+     <div id="b">你输了</div>
+    <div id="c">再来一次</div>
+    <script>
+   	$(function(){
+   	var change = true;
+    var o = [
+        		[0, 0, 0, 0],
+        		[0, 0, 0, 0],
+        		[0, 0, 0, 0],
+        		[0, 0, 0, 0]
+    		];
+    o[-1] = 1;
+    random_2();
+   	style();
+    function style() {
+        for (var m = 0; m < 4; m++) {
+            for (var n = 0; n < 4; n++) {
+                if (o[m][n] == 0) {
+                    $("#"+m+n).text("").removeClass();                   
+                } else {
+                	if(!($("#"+m+n).hasClass("new"))){
+                		$("#"+m+n).text(o[m][n]).attr("class","c"+o[m][n]);
+                	}                                      	                   
+                }               
+            }
+        }
+        $(".new").text("2").fadeOut(1).attr("class","c2").fadeIn(100);
+    }
+    function myRandom(min, max) {
+        var choices = max - min + 1;
+        return Math.floor(Math.random() * choices + min)
+    }
+    function arr_up(n) {
+        if (n == 0) {
+            for (var i = 0, len = o.length; i < len; i++) {
+                var o_1 = re_arr([o[3][i], o[2][i], o[1][i], o[0][i]]);
+                o_1.reverse();
+                for (var j = 0; j < o_1.length; j++) {
+                    o[j][i] = o_1[j];
+                }
+            }
+        } else {
+            for (var i = 0, len = o.length; i < len; i++) {
+                var o_1 = re_arr([o[0][i], o[1][i], o[2][i], o[3][i]]);
+                for (var j = 0; j < o_1.length; j++) {
+                    o[j][i] = o_1[j];
+                }
+            }
+        }
+    }
+    function arr_left(n) {
+        if (n == 0) {
+            for (var i = 0, len = o.length; i < len; i++) {
+                var o_1 = o[i].reverse();
+                o_1 = re_arr(o_1).reverse();
+                o[i] = o_1;
+            }
+        } else {
+            for (var i = 0, len = o.length; i < len; i++) {
+                o[i] = re_arr(o[i]);
+            }
+        }
+    }
+    function re_arr(arr) {
+        var arr1 = [],
+            arr2 = arr;
+        len = arr.length,
+            inde = 0;
+        for (var i = 0; i < len; i++) {
+            if (arr[i] != 0) {
+                arr1.push(arr[i]);
+            }
+        }
+        for (var j = 0; j < arr1.length; j++) {
+            if (arr1[j + 1] != undefined && arr1[j] == arr1[j + 1]) {
+                arr1[j] = arr1[j] + arr1[j + 1];
+                arr1.splice(j + 1, 1);
+            }
+        }
+        inde = len - arr1.length;
+        for (var k = 0; k < inde; k++) {
+            arr1.push(0);
+        }
+
+        if (arr1.toString() != arr2.toString()) {
+            change = true;
+        }
+        return arr1;
+    }
+    function round() {
+        o[4] = 1;
+        for (var m = 0; m < 4; m++) {
+            for (var n = 0; n < 4; n++) {
+                if (o[m][n] == 0) {
+                    o.pop();
+                    return;
+                }
+                if ((o[m][n] == o[m - 1][n]) || (o[m][n] == o[m + 1][n]) || (o[m][n] == o[m][n - 1]) || (o[m][n] == o[m][n + 1])) {
+                    o.pop();
+                    return;
+                } else {
+                    if (m == 3 && n == 3) {
+                         $("#b").show(100);
+                         $("#c").show(100);
+                        o.pop();
+                        break;
+                    }
+                }
+            }
+        }
+
+    }
+    function random_2() {
+        if (change) {
+            while (1) {
+                var m = myRandom(0, 3),
+                    n = myRandom(0, 3);
+                if (o[m][n] == 0) {
+                    o[m][n] = 2;
+                    $("#"+m+n).addClass("new");
+                    change = false;
+                    return;
+                }
+            }
+        } else {
+            round();
+        }
+    }
+     $("#c").click(function(){
+     	 $("#b").hide();
+     	  $("#c").hide();
+     	  change=true;
+     	   o = [
+        		[0, 0, 0, 0],
+        		[0, 0, 0, 0],
+        		[0, 0, 0, 0],
+        		[0, 0, 0, 0]
+    		];
+    		random_2();
+    		style();
+     });
+    window.onkeydown = function(event) {
+        switch (event.keyCode) {
+            case 38:
+                arr_up();
+                random_2();
+                style();
+                break;
+            case 40:
+                arr_up(0);
+                random_2();
+                style();
+                break;
+            case 37:
+                arr_left();
+                random_2();
+                style();
+                break;
+            case 39:
+                arr_left(0);
+                random_2();
+                style();
+                break;
+        }
+    };
+   	})
+    </script>
+</body>
+
+</html>

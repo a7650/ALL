@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.b{
+			color:red;
+		}
+		.a.c{
+			color: blueviolet;
+		}
+	</style>
+	<body>
+		<p class="a b c" id="abc">123</p>
+		
+		<script>
+			var classnames=document.getElementById("abc").className.split(/\s+/);
+			var j,i=0;
+			for(i,len=classnames.length;i<len;i++){
+				if(classnames[i]=="b"){
+					classnames.splice(i,1);
+					break;
+				}
+			}
+			document.getElementById("abc").className=classnames.join(" ");
+			console.log(document.getElementById("abc").classList);
+		</script>
+	</body>
+</html>

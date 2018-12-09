@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		
+		
+		
+		
+		<script>
+			//弹窗模板
+			var Alert=function(date){
+				if(!date){
+					return;
+				}
+				this.panel=document.createElement("div");
+				this.confirm=document.createElement("span");
+				this.close=document.createElement("span");
+				this.contentnode=document.createElement("p");
+				this.contentnode.innerHTML=date.content;
+				this.confirm.innerHTML=date.confirm||'确认';
+				this.close.innerHTML=date.close||'取消';
+				this.panel.className='alert';
+				this.confirm.className='confirm';
+				this.close.className='close';	
+				this.success=date.success||function(){};
+				this.fail=date.fail||function(){};			
+			}
+			Alert.prototype={
+				init:function(){
+					this.panel.appendChild(this.contentnode);
+					this.panel.appendChild(this.confirm);
+					this.panel.appendChild(this.close);
+					document.body.appendChild(this.panel);
+					this.show();
+					this.addEvent();
+				},
+				addEvent:function(){
+					var that=this;
+					this.confirm.onclick=function(){
+						that.success();
+						that.hide();
+					}
+					this.close.onclick=function(){
+						that.fail();
+						that.hide();
+					}
+
+				},
+				show:function(){
+					this.panel.style.display="block";
+				},
+				hide:function(){
+					this.panel.style.display="none";
+				}
+			}
+			//标题弹窗
+			var titleAlert=function(date){
+				Alert.call(this,date);
+				this.title=document.createElement("p");
+				this.title.className=date.titleclassname||'title';
+				this.title.innerHTML=date.title||'title';
+			}
+			titleAlert.prototype=new Alert();
+			titleAlert.prototype.init=function(){
+				this.panel.appendChild(this.title);
+				Alert.prototype.init.call(this);
+
+			}
+			var alert1=new titleAlert({content:"提示框",success:function(){console.log("success")},fail:function(){console.log("fail")},title:'这是标题'}).init();
+
+
+			//导航模板
+			var 
+
+
+		</script>
+		
+		
+	</body>
+</html>

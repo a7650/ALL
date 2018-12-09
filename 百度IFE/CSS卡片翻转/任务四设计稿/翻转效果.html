@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			
+		#stage{
+			
+		}
+		#container{
+			width: 250px;
+			height: 350px;
+			transform-style:preserve-3d;
+			position: relative;
+		}
+		#container div{
+			width: 250px;
+			height: 350px;
+			backface-visibility: hidden;
+			position: absolute;
+			top: 0;
+			left: 0;
+			transition:5S;
+		}
+		#one{
+			background: url(正面.jpg);
+		}
+		#two{
+			background: url(反面.jpg);
+			transform: rotateY(180deg);
+		}
+		#container:hover>#one{
+			transform: rotateY(180deg);
+		}
+		
+		#container:hover>#two{
+			transform: rotateY(360deg);
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id="stage">
+			<div id="container">
+				<div id="one">1</div>
+				<div id="two">2</div>
+			</div>
+		</div>
+		</div>
+	</body>
+</html>

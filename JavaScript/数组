@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+function matrix(m,n,arr){
+	if(typeof arr=="number"){
+		var mm= new Array(m+1),
+			nn= new Array(n+1);
+			for(var j=1;j<n+1;j++){
+					nn[j]=arr;
+				}
+			for(var i=1;i<m+1;i++){
+				mm[i]=nn.join(" ");
+				
+			}
+	}
+	if(typeof m=="object"||typeof arr=="object"){
+		if(typeof m=="object"){
+			var a=arguments.length;
+			var mm=new Array(a+1);
+			for(var i=1;i<a+1;i++){
+				mm[i]=arguments[i-1].join(" ");
+			}
+			
+		}
+		else{
+			var mm=new Array(m+1);
+			for(var i=1;i<m+1;i++){
+				mm[i]=arguments[1+i].join(" ");
+			}
+		}
+}
+	return mm.join("|");
+}
+
+
+var a=matrix(2,2,[2,2],[3,3]);
+console.log(a);
+		</script>
+	</body>
+</html>

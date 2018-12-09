@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function parseQueryString(arg){
+				var url2=arg.split("?")[1];
+				var item=url2.split("&");
+				var result={};
+				for(var i=0,len=item.length;i<len;i++){
+					var item2=item[i].split("=");
+					result[item2[0]]=item2[1];
+				}
+				return result;
+			}
+			var u="http://www.taobao.com/index.php?key0=0&key1=1&key2=2";
+			console.log(parseQueryString(u)["key0"]);
+		</script>
+	</body>
+</html>

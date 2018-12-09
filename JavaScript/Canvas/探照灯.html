@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#a{
+				position: absolute;
+				left: 0;
+				top:0;
+				color: rgba( );
+				
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="600" height="600" id="a"></canvas>
+		<img src="../../百度学院/img/page5-2.png" alt="1">
+		
+		
+		<script>
+			var a=document.getElementById("a");
+			var contex=a.getContext("2d");
+			var img=document.getElementsByTagName("img")[0];
+			contex.drawImage(img,0,0);
+			contex.fillStyle="black";
+			contex.fillRect(0,0,600,600);
+			
+			
+			a.onmousemove=function(event){
+				contex.clearRect(0,0,600,600);
+				var c_x=event.clientX;
+				var c_y=event.clientY;
+				var gradient=contex.createRadialGradient(c_x,c_y,50,c_x,c_y,70);
+				gradient.addColorStop(0,"transparent");
+				gradient.addColorStop(1,"black");
+				contex.fillStyle=gradient;
+				contex.fillRect(0,0,600,600);
+			}
+		</script>
+	</body>
+</html>

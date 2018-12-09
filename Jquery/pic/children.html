@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/jscript" src="jquery-3.3.1.js"></script>
+	</head>
+	<style>
+		.input_blur{
+			color:gainsboro;
+		}
+		.input_focus{
+			color:black;
+		}
+		span{
+			margin-left: -19px;
+			cursor: pointer;
+		}
+		#abc{
+			width: 100px;
+			height: 100px;
+			background: #000000;
+		}
+	</style>
+	<body>
+
+<input type="text" class="input_blur" value="请输入账号" title="请输入账号"  /><span>×</span>
+<br />
+<input type="text" class="input_blur" value="请输入密码"  title="请输入密码" /><span>×</span>
+<button id="show">click</button>
+<div id="abc"></div>
+
+<script>
+
+$(document).ready(function(){
+	$("span").hide();
+	$("input[type=text]").focus(function(event){
+		$(this).next().show();
+		if(this.value==this.defaultValue){
+			$(this).val("").removeClass("input_blur").addClass("input_focus");
+		}		
+	});
+	$("input[type=text]").blur(function(){
+		$("span").hide();
+		if(this.value.length==0){
+		$(this).val(this.defaultValue).removeClass("input_focus").addClass("input_blur");
+		}			
+		}
+	);
+	$("span").mousedown(function(){
+		$(this).prev().val("");
+		$(this).prev()[0].focus();
+	})
+		
+		$("#abc").hide();
+	$("#show").click(function(){
+		$("#abc").show(200);
+	})
+
+
+
+
+});
+
+	
+</script>
+
+
+
+
+	</body>
+</html>

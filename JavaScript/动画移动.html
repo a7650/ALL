@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+
+    </style>
+</head>
+<body>
+
+<div id="message">132</div>
+
+
+<script>
+
+    var elem=document.getElementById("message");
+    elem.style.position="absolute";
+    elem.style.top="100px";
+    elem.style.left="50px";
+
+    function moveMessage() {
+        if (!document.getElementById) return false;
+        if (!document.getElementById("message")) return false;
+        var elem=document.getElementById("message");
+        var xpos = parseInt(elem.style.left);
+        var ypos = parseInt(elem.style.top);
+        if (xpos == 200 && ypos == 100){
+            return ture;
+        }
+        if (xpos < 200){
+            xpos++;
+        }
+        if (xpos > 200){
+            xpos--;
+        }
+        if (ypos < 100){
+            ypos++;
+        }
+        if (ypos > 100){
+            ypos--;
+        }
+        elem.style.left = xpos+"px";
+        elem.style.top  = ypos+"px";
+        movement = setTimeout("moveMessage()",1);
+    }
+    window.onload=moveMessage();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .placeholder {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<form >
+
+    <input type="text" id="name" name="name" class="placeholder" >
+    <input type="text" id="password" name="password" class="placeholder" >
+    <input type="submit" value="submit" id="submit">
+
+    <a href="Abbr.html " id="aaa" >name</a>
+    <a href="" >password</a>
+</form>
+
+<script>
+    function addLoadEvent(func){
+        var oldonload=window.onload;
+        if(typeof window.onload != 'function') window.onload=func;
+        else{
+            window.onload=function(){
+                oldonload();
+                func();
+            }
+        }
+    }
+    function forId() {
+        var ps = document.getElementsByTagName("a");
+        for (var i=0;i<ps.length;i++) {
+            ps[i].style.color="blue";
+            if(!ps[i].lastChild.nodeValue)continue;
+            ps[i].onclick = function () {
+                var id=this.lastChild.nodeValue;
+                if(!document.getElementById(id))return false;
+                var elem=document.getElementById(id);
+                elem.focus();
+                return false;
+            }
+        }
+    }
+    function focus(whichform){
+        for(var i=0;i<whichform.elements.length;i++){
+            var elements=whichform.elements[i];
+            if(elements.type=="submit")continue;
+            elements.onfocus=function () {
+                var text=this.name;
+                if(this.value==text){
+                    this.setAttribute("class","");
+                    this.value="";
+                }
+            }
+            elements.onblur=function () {
+                if(this.value==""){
+                    this.setAttribute("class","placeholder");
+                    this.value=this.name;
+
+                }
+            }
+        }
+    }
+function actions(){
+        var form=document.getElementsByTagName("form");
+        for(var i=0;i<form.length;i++){
+            var thisform=form[i];
+
+            sunmitTest(thisform);
+        }
+}
+function sunmitTest(whichform){
+        for(var i=0;i<whichform.elements.length;i++){
+            var elements=whichform.elements[i];
+            if(elements.type!="submit")continue;
+            elements.onclick=function () {
+                var tip="";
+                var texts=whichform.elements;
+                for(var j=0;j<texts.length;j++){
+                    var text=texts[j];
+                    if(text.type=="submit")continue;
+                    if(text.value==""||text.value.replace(/ /g,"").length==0)
+                         tip+=" "+text.name+" ";
+                }
+                if(tip!="")alert("Tip:请完成"+tip+"的填写");
+
+            }
+        }
+}
+    window.onload=actions();
+</script>
+
+</body>
+</html>

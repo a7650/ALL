@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+	   body {
+  margin: 40px;
+}
+
+.box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
+
+.box:nth-child(even) {
+  background-color: #ccc;
+  color: #000;
+}
+
+	.wrapper {
+		display: grid;
+    border:1px solid #000;
+    grid-gap: 50%;
+		grid-template-columns: repeat(auto-fill,200px);
+	}
+	.item1{
+		grid-column:1/span 3;
+	}
+
+
+
+		</style>
+	</head>
+	<body>
+	<div class="wrapper">
+    <div class="box item1">One</div>
+    <div class="box item2">Two</div>
+    <div class="box item3">Three</div>
+    <div class="box item4">Four</div>
+    <div class="box item5">Five</div>
+    <div class="box item1">One</div>
+    <div class="box item2">Two</div>
+    <div class="box item3">Three</div>
+    <div class="box item4">Four</div>
+    <div class="box item5">Five</div>
+</div>
+
+	</body>
+</html>

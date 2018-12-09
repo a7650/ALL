@@ -1,0 +1,264 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="vue.js"></script>
+	<style>
+		h3{
+			color: red;
+		}
+		.changeColor{
+			background:blue;
+		}
+		.changeLength{
+			width: 100px;
+			height: 100px;
+		}
+	</style>
+</head>
+<body>
+	<h3>购物车</h3>
+	<table id="iphone">
+		<tr>
+			<td>序号</td><td>名称</td><td>价格</td><td>数量</td><td>操作</td>
+		</tr>
+		<tr v-for="i in IP">
+			<td>{{i.id}}</td>
+			<td>{{i.name}}</td>
+			<td>{{i.price}}</td>
+			<td>
+				<button @click="i.count--">-</button>
+				{{i.count}}
+			<button @click="i.count++">+</button>
+			</td>
+			<td>
+				<BUTTON @click="i.count=0">删除</button>
+			</td>
+		</tr>
+		<tr>
+			<td>总价：{{total_price()}}</td>
+		</tr>
+	</table>
+
+<div id="comp">
+	<h3>component</h3>
+	<input type="text"  v-model="parent_message">
+	<br>
+	<child v-bind:message="parent_message"></child>
+</div>
+
+<div id="km_m">
+	<h3>watch</h3>
+	<input type="text" v-model="m"/>米 = 
+	<input type="text" v-model="km"  />千米
+</div>
+
+<div id="computed">
+	<h3>计算属性</h3>
+	<button @click="a++">add to a</button>
+	<button @click="b++">add to b</button>
+	<span>A--{{a}}  B--{{b}}</span>
+	<p>addToA={{addToA}}</p>
+	<p>addToB={{addToB}}</p>
+</div>
+
+<div id="compclass">
+	<h3>bind class</h3>
+	<div v-bind:class="[changeColor,changeLength]"></div>
+</div>
+
+<div id="if">
+	<!-- if如果判断为false 元素为从dom中消失，而show如果为false，元素display会变为none -->
+	<h3>IF</h3>
+	<button @click="error=!error">toggle error</button>
+	<button @click="success=!success">toggle success</button>
+	<span v-if="error">网络连接错误404.8</span>
+	<span v-if="success">数据发送成功</span>
+</div>
+
+
+<div id="component">
+	<h3>COMPONENT</h3>
+	<componen :message="count" @addcount="increatcount" >123</componen>
+
+</div>
+
+<div id="filt">
+<h3>FILTER</h3>
+<input type="text" v-model="fil"  />
+<p>{{fil|f}}</p>
+</div>
+
+
+
+
+<script>
+new Vue({
+	el:"#filt",
+	data:{
+		fil:""
+	},
+	filters:{
+		f:function(val){
+			if(!val)return "";
+			return val.charAt(0).toUpperCase()+val.slice(1);
+		}
+	}
+})
+
+	Vue.component("componen",{
+		props:["message"],
+		template:"<button @click='addm'>{{message}}</button>",
+		methods:{
+			addm(){
+				this.$emit('addcount')
+			}
+		}
+		// data(){
+		// 	return{
+		// 		count:1
+		// 	}
+		// }
+	});
+	new Vue({
+		el:"#component",
+		data:{
+			count:1
+		},
+		methods:{
+			increatcount(){
+				this.count++;
+			}
+		}
+	})
+// new Vue({
+// 	el:"#component",
+// 	components:{
+// 		"component":{
+// 			template:"<button @click='count++'>{{count}}</button>",
+// 			data:function(){
+// 				return {
+// 					count:0
+// 				}
+// 			}
+// 		}
+// 	}
+// })
+
+
+
+
+
+
+new Vue({
+	el:"#if",
+	data:{
+		error:false,
+		success:false
+	}
+})
+
+
+	new Vue({
+		el:"#compclass",
+		data:{
+				changeColor:"changeColor",
+				changeLength:"changeLength"
+		},
+		computed:{
+			comp(){
+				return{
+					changeColor:true,
+					changeLength:true
+				}
+			}
+		}
+
+	})
+	
+new Vue({
+	el:"#computed",
+	data:{
+		a:0,
+		b:0
+	},
+	computed:{
+		addToA:function(){
+			console.log(this.a);
+			return 30+this.a;
+		},
+		addToB:function(){
+			return 30+this.b;
+		}
+	},
+	methods:{
+
+
+	}
+
+})
+new Vue({
+	el:"#km_m",
+	data:{
+		m:0,
+		km:0
+	},
+	watch:{
+		m:function(m){
+			this.m=m;
+			this.km=m/1000;
+		},
+		km:function(km){
+			this.km=km;
+			this.m=km*1000;
+		}
+
+	}
+})
+new Vue({
+	el:"#iphone",
+	data:{
+		IP: [{
+		      id: 1,
+		      name: 'iphone 8',
+		      price: 5099,
+		      count: 1
+		    },
+		    {
+		      id: 2,
+		      name: 'iphone xs',
+		      price: 8699,
+		      count: 1
+		    },
+		    {
+		      id: 3,
+		      name: 'iphone xr',
+		      price: 6499,
+		      count: 1
+		    }]
+	},
+	methods:{
+		total_price:function(){
+			var t=0;
+			for(var i=0 ; i<this.IP.length ; i++){
+				t+=this.IP[i].price*this.IP[i].count;
+			}
+			return t;
+		}
+	}
+})
+
+Vue.component("child",{
+	props:["message"],
+	template:"<span>{{message}}</span>"
+})
+new Vue({
+	el:"#comp",
+	data:{
+		parent_message:"par"
+	}
+})
+</script>
+</body>
+</html>

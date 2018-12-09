@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.creat_img{
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body onload="creat_img(3)">
+		
+		
+		
+		<script>
+			function creat_img(n){
+				if(document.getElementsByClassName("creat_img").length>n-1) return false
+				var img=document.createElement("img");
+				img.className="creat_img";
+				img.src="../登陆页面/img/A.jpg";
+				document.getElementsByTagName("body")[0].appendChild(img);
+				setTimeout(function(){
+					img.style.borderColor="transparent	";
+				},300);
+				img.onload=function(){
+					console.log(document.getElementsByClassName("creat_img").length);
+				};
+				setTimeout("creat_img("+n+")",500);
+				
+
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="jquery-3.3.1.js"></script>
+	<style>
+		.a{
+			width: 50px;
+			height: 50px;
+			
+		}
+	</style>
+	</head>
+	<body>
+		<img src="../JavaScript/img/1.jpg"  class="a"/ alt="1">
+		<img src="../JavaScript/img/2.jpg"  class="a" alt="2"/>
+		<img src="../JavaScript/img/3.jpg"  class="a" alt="3"/>
+	</body>
+	<script>
+		$(document).ready(function(){
+			$(".a").mouseover(function(event){
+				var tools=$("<div id='toolstip'> <img src='"+this.src+"'/></div>");
+				$("body").append(tools);
+				$("#toolstip").css({
+					"position":"absolute",
+					"top":event.clientY+"px",
+					"left":event.clientX+"px"
+				});
+			}).mouseout(function(){
+				$("#toolstip").remove();
+			}).mousemove(function(event){
+				$("#toolstip").css({
+					"top":event.clientY+"px",
+					"left":event.clientX+"px"
+				})
+			})
+		})
+	</script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="num" name="nu" >
+<input id="weishu" type="text" placeholder="输入转化后二进制数字位数">
+<button onclick="conversion()">on</button>
+<p id="jieguo">结果:</p>
+
+
+
+
+<script>
+    function conversion(){
+        var a=document.getElementById("num").value;
+        if(a[0]>="0"&&a[0]<="9"){
+            var num = parseInt(a);
+            var anti_conse = [];
+            var i = 0;
+            var conse = [];
+            var m = 0;
+            var weishu=document.getElementById("weishu").value;
+            while (i < 1) {
+                var shang = parseInt(num / 2);
+                var yushu = num % 2;
+                anti_conse[m] = yushu;
+                num = shang;
+                m++;
+                if (shang == 0) {
+                    i = 1;
+                    m--;
+                }
+            }
+            for (var i = 0; i < anti_conse.length; i++) {
+                conse[i] = anti_conse[m];
+                m--;
+            }
+            var l=conse.length;
+            if (weishu<=l) {
+                for (var g=0;g<conse.length; g++) {
+                    document.getElementById("jieguo").innerHTML += conse[g];
+                }
+            }
+            else{
+                var zero=weishu-l;
+                for(zero;zero>0;zero--){
+                    document.getElementById("jieguo").innerHTML+="0";
+                }
+                for (var g = 0; g < conse.length; g++) {
+                    document.getElementById("jieguo").innerHTML += conse[g];
+                }
+
+            }
+
+        }
+        else {
+            document.getElementById("jieguo").innerHTML+="请输入非负整数";
+        }
+        document.getElementById("jieguo").innerHTML+="<br/>";
+        }
+</script>
+
+
+</body>
+</html>

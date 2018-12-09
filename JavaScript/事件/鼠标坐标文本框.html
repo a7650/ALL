@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#b{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="a">mouse_event</div>
+		<div id="b"></div>
+		<script>
+			var a=document.getElementById("a");
+			var body=document.getElementsByTagName("body")[0];
+			body.onmousemove=function(event){
+			a.style.position="absolute";
+			var xpos=event.clientX-20;
+			var ypos=event.clientY+30;
+			a.style.left=xpos+"px";
+			a.style.top=ypos+"px";
+			
+			}
+		</script>
+	</body>
+</html>

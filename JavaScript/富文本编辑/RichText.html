@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.button{
+				display: inline-block;
+				background-color: gainsboro;
+				margin-right: 2px;
+				cursor: pointer;
+				background-color: gray;
+				border: none;
+				padding: 5px;
+				color: white;
+				position: relative;
+			}
+			.button:hover{
+				background-color: black;
+			}
+			#text_area{
+				width: 300px;
+				height: 300px;
+				border: 1px solid black;
+			}
+			#rgb{
+				display: none;
+				width: 200px;
+				height: 110px;
+				border: 1px solid black;
+				position: relative;
+				background-color: white;
+			}
+			#color_board{
+				width: 40%;
+				height: 30px;
+				background:deepskyblue ;
+				position: absolute;
+				bottom: 5px;
+				right: 5px;
+				 
+			}
+			#input_url{
+				position: absolute;
+				width: 300px;
+				height: 80px;
+				top: 40px;
+				left:100px;
+				background-color: white;
+				border:1px solid black;
+				box-shadow: 7px 7px 0 black;
+			}
+			#input_url>input{
+				position: absolute;
+				width:180px ;
+				height: 30px;
+				top: 10px;
+				left: 59px;
+				font-size: 17px;
+			}
+			#input_url>input:focus{
+				box-shadow:0 0 5px gray;
+			}
+			#input_url>input:hover{
+				border-color: black;
+			}
+			#input_url>button{
+				width: 50px;
+				height: 20px;
+				background-color: white;
+				border: 1px black solid;				
+			}
+			#input_url>button:hover{
+				background-color: black;
+				color: white;
+			}
+			#input_url>.button_ok{
+				position: absolute;
+				top: 50px;
+				left: 59px;
+			}
+			#input_url>.button_cancel{
+				position: absolute;
+				top: 50px;
+				right: 59px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="button" name="bu">
+			<button name="color" id="color" class="button">颜色</button>
+				<div id="rgb">
+					<button id="select" > select </button>
+					<span>R</span><input type="range" id="red" min="0" max="250" /><br />
+					<span>G</span> <input type="range" id="green" min="0" max="250" /><br />
+					<span>B</span> <input type="range" id="blue" min="0" max="250" /><br />				
+					<div id="color_board" ></div>
+				</div>
+			<button name="bold" class="button">加粗</button>
+			<button name="underline" class="button">下划线</button>
+			<button name="backcolor" class="button">背景颜色</button>
+			<button name="_url" class="button" >链接</button>
+				<div id="input_url" >					
+					<button class="button_ok" >确定</button>
+					<button class="button_cancel">取消</button>
+					<input type="input" value="http://"  />
+				</div>
+		</div>
+		<div id="text_area"></div>
+		<script>
+
+		
+		
+		
+		
+		
+function a(){	
+	var window_status=[],
+		status=0;
+	var text_area=document.getElementById("text_area");
+		text_area.contentEditable="true";
+	var button_box=document.getElementById("button");
+	var rgb=document.getElementById("rgb");
+	var input_url=document.getElementById("input_url");
+		input_url.style.display="none";
+	
+	
+	
+	//键盘事件
+	document.onkeyup=function(event){
+		//esc监听函数
+		if(event.keyCode===27){	
+			if(status<1)return;
+			else{
+				var current_window=document.getElementById(window_status[status]);
+				switch(current_window.style.display){
+				case "block":
+					current_window.style.display="none";					
+					status--;					
+					break;
+				case "none":
+					for(status;status>0;status--){
+						var current_window=document.getElementById(window_status[status]);
+						if(current_window.style.display=="block"){
+							current_window.style.display="none";
+			                status--;			                
+			                break;
+						}
+					}
+					break;
+				}
+			}			
+		}
+	
+		//enter监听函数
+		if(event.keyCode===13){
+			if(status<1)return;
+			else{
+				var current_window=document.getElementById(window_status[status]);
+				switch(current_window.style.display){
+
+				case "block" :
+				   		var enter_button=current_window.getElementsByTagName("button")[0];
+						var eventt=document.createEvent("MouseEvents");
+						eventt.initMouseEvent("click",true,true,document.defaultView,0,0,0,0,0,false,false,false,false,0,null);
+						enter_button.dispatchEvent(eventt);	
+						status--;
+						break;
+						
+				case "none":			
+					for(status;status>0;status--){
+						var current_window=document.getElementById(window_status[status]);					
+						if(current_window.style.display==="block"){	
+							var enter_button=current_window.getElementsByTagName("button")[0];
+							var eventt=document.createEvent("MouseEvents");
+							eventt.initMouseEvent("click",true,true,document.defaultView,0,0,0,0,0,false,false,false,false,0,null);							
+			                enter_button.dispatchEvent(eventt);		
+			                status--;
+			                break;			                
+						}
+					}
+					break;
+				}
+			}
+		}	
+	}
+	
+	
+	
+	
+
+
+	//button_ok函数
+	var button_ok=input_url.getElementsByTagName("button")[0];
+	button_ok.onclick=function(){
+		var url_text=input_url.getElementsByTagName("input")[0].value;
+		document.execCommand("creatlink",false,url_text);
+		input_url.style.display="none";	
+	};
+	//button_cancel函数
+	var button_cancel=input_url.getElementsByTagName("button")[1];
+	button_cancel.onclick=function(){
+		input_url.style.display="none";		
+	};
+	//select函数
+	var button_select=document.getElementById("select");
+	button_select.onclick=function(){
+				console.log("功能未实现");
+				rgb.style.display="none";
+	};
+	
+	
+	
+	
+
+	//按钮触发 
+		button_box.onclick=function(event){
+		var target=event.target;
+		switch(target.name){
+			case "color":
+				if(rgb.style.display==="none"){
+					
+					status++;
+					window_status[status]="rgb";
+					rgb.style.zIndex=status*10;
+					rgb.style.display="block";
+					target.blur();
+				}
+				else{
+					rgb.style.display="none";
+					target.blur();
+				}
+				break;			
+			case "bold":
+				document.execCommand("bold",false,null);
+				break;
+			case "underline":
+				document.execCommand("underline",false,null);
+				break;
+			case "backcolor":
+				document.execCommand("backcolor",false,"red");
+				break;
+			case "_url":
+				if(input_url.style.display==="none"){
+					
+					status++;
+					window_status[status]="input_url";
+					input_url.style.zIndex=status*10;
+					input_url.style.display="block";
+					target.blur();
+				}
+				else{
+					input_url.style.display="none";
+					target.blur();
+				}
+				break;
+				
+		}
+	}
+		
+		//清理缓存
+	   var clear_cache=function (){
+		console.log("清理缓存开始");
+		var new_status=[];
+		for(var i=status;i>0;i--){
+			if(new_status.indexOf(window_status[i])<0){
+				if(document.getElementById(window_status[i]).style.display==="block"){
+					console.log(i);
+					new_status.unshift(window_status[i]);
+				}
+			}
+		}
+		window_status=null;
+		window_status=new_status;
+		new_status=null;
+		window_status.unshift(undefined);
+		status=window_status.length-1;
+		console.log("缓存清理完毕");
+		console.log("status="+status);
+		console.log(window_status);	
+		setTimeout(clear_cache,60000);
+	};
+	clear_cache();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+window.onload=function(){
+	a();
+};
+
+		</script>
+	</body>
+</html>

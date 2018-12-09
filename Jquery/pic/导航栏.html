@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/jscript" src="jquery-3.3.1.js"></script>
+		<style>
+			.div{
+				color: 
+			}
+		</style>
+	</head>
+	<body>
+		
+		<input type="checkbox" id="che" /><a href="">我已阅读规范</a>
+		<input type="submit" id="sub" value="提交"   />
+
+			<script>
+			$(document).ready(function(){
+				$("#sub").attr("disabled",true);
+				$("#che").click(function(){
+					if($("#che")[0].checked){
+						$("#sub").attr("disabled",false);
+					}
+					else{
+						$("#sub").attr("disabled",true);
+
+					
+				})
+				console.log("1");
+			})
+		</script>
+	</body>
+</html>

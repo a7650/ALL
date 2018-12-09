@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<iframe name="richtext" style="height: 300px; width:500px;" src="blank.html"></iframe>
+		<button> bold </button>
+		<script>
+			window.onload=function(event){
+				frames["richtext"].document.designMode="on";
+			}
+			
+				frames["richtext"].document.execCommand("bold",true,null);
+			
+		</script>
+	</body>
+</html>

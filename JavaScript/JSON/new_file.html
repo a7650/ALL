@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var book={
+				"name":"js",
+				"author":{
+					"a":1,
+					"b":2,
+					toJSON:function(){
+					return "aaaaaa";
+				}
+				},
+				year:2000
+			}
+			var jsontext=JSON.stringify(book);
+console.log(jsontext)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+	<script type="text/javascript">
+
+		
+		
+		function CreatObj(name,content){
+			var o=new Object();
+			o.content=content;			
+			switch(name){
+				case 'alert':
+					o.show=function(){
+						console.log("提示框:"+this.content);
+					}
+					break;
+				case 'confirm':
+					o.show=function(){
+						console.log("确认框:"+this.content);
+					}
+					break;
+			}
+			return o;
+		}
+		
+		
+		
+		
+		function PopFactory(name,content){
+			return CreatObj(name,content);
+		}
+		var alert1=CreatObj('alert',"这是提示框1");
+		var confirm1=CreatObj('confirm',"这是确认框1");
+		alert1.show();
+		confirm1.show();
+	</script>		
+	</body>
+</html>

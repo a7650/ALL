@@ -70,4 +70,4 @@ window.max_y=function(y){
 window.myRandom=function(min, max) {
         var choices = max - min + 1;
         return Math.floor(Math.random() * choices + min)
-    }
+}

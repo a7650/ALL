@@ -1,3 +1,5 @@
+
+
 /**技能 */
 export default class Skill {
     constructor(name, mpSpend = 0) {
@@ -67,3 +69,4 @@ export class RecoverMp extends Skill {
     }
     invoker(from, to) { }
 }
+

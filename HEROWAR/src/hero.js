@@ -1,5 +1,5 @@
 import { NormalAttack } from "./skill";
-import AttackQueue from "./attackQueue";
+import AttackQueue from "./attackQueue.";
 
 /** 英雄 */
 export default class Hero {

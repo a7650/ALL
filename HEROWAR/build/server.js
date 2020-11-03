@@ -12,6 +12,7 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(require("webpack-hot-middleware")(compiler))
 
-app.listen(3000, function () {
-    console.log('Example app listening on port 3000!\n');
+const port = 3000
+app.listen(port, function () {
+    console.log(`dev: http://localhost:${port}`);
 });

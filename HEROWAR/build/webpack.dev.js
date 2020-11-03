@@ -1,6 +1,8 @@
 const { merge } = require('webpack-merge')
 const common = require('./webpack.common')
 const webpack = require('webpack')
+const { constants } = require('buffer')
+const path = require('path')
 
 module.exports = merge(common, {
     mode: 'development',
@@ -15,7 +17,8 @@ module.exports = merge(common, {
                 use: [
                     'style-loader',
                     'css-loader'
-                ]
+                ],
+                exclude: /node_modules/
             }
         ]
     },
@@ -24,5 +27,6 @@ module.exports = merge(common, {
             'process.env.NODE_ENV': JSON.stringify('development')
         }),
         new webpack.HotModuleReplacementPlugin()
-    ]
+    ],
+    stats: 'none'
 })

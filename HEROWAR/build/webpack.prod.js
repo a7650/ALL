@@ -20,9 +20,6 @@ module.exports = merge(common, {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
-        // new UglifyJSPlugin({
-        //     sourceMap: true
-        // }),
         new CleanWebpackPlugin({
             dry: 'dist'
         }),
@@ -47,6 +44,10 @@ module.exports = merge(common, {
     optimization: {
         minimizer: [
             new CssMinimizerPlugin(),
+            new UglifyJSPlugin({
+                sourceMap: true,
+                exclude: /node_modules/
+            })
         ],
         runtimeChunk: 'single',
         splitChunks: {

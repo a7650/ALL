@@ -28,7 +28,13 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use:'ts-loader',
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+            presets: ['@babel/preset-env']
+          }
+        }, 'ts-loader'],
         // options: {
         //   transpileOnly: true,
         //   experimentalWatchApi: true,
@@ -38,7 +44,10 @@ module.exports = {
       {
         test: /\.js$/,
         use: {
-          loader: 'babel-loader'
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
         },
         exclude: /node_modules/
       },
@@ -56,6 +65,6 @@ module.exports = {
       '@': path.resolve(__dirname, '../src'),
       'Utils': path.resolve(__dirname, '../src/utils')
     }
-  }
-  // stats: 'none'
+  },
+  stats: 'none'
 };

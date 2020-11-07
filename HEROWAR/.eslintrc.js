@@ -10,5 +10,11 @@ module.exports = {
     rules: {
         // place to specify ESLint rules - can be used to overwrite rules specified from the extended configs
         // e.g. "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-this-alias": [
+            "error",
+            {
+                "allowedNames": ["self"] // Allow `const self = this`; `[]` by default
+            }
+        ]
     }
 };

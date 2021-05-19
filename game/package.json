@@ -7,13 +7,16 @@
   "scripts": {
     "build": "webpack --config build/webpack.prod.js",
     "build-in-server": "npm run build && http-server dist",
-    "dev": "node build/server.js"
+    "dev:hero": "node build/server.js config=heroWar/webpack.dev.js",
+    "dev:snak": "node build/server.js config=snakGame1/webpack.dev.js",
+    "dev:firework": "node build/server.js config=firework/webpack.dev.js"
   },
   "author": "zzp",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "^7.12.1",
     "@typescript-eslint/eslint-plugin": "^4.6.0",
     "@typescript-eslint/parser": "^4.6.0",

@@ -1,8 +1,7 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
 const Manifest = require('webpack-manifest-plugin')
 // const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
-const FileListPlugin = require('./plugin');
+const FileListPlugin = require('./plugin')
 
 module.exports = {
   mode: 'development',
@@ -13,10 +12,6 @@ module.exports = {
   },
   plugins: [
     new Manifest(),
-    new HtmlWebpackPlugin({
-      title: 'HEROWAR',
-      template: './public/index.html'
-    }),
     // new ForkTsCheckerWebpackPlugin({
     //   eslint: {
     //     files: './src/**/*.{ts,tsx,js,jsx}'
@@ -28,18 +23,21 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [{
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
-            presets: ['@babel/preset-env']
-          }
-        }, 'ts-loader'],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true,
+              presets: ['@babel/preset-env']
+            }
+          },
+          'ts-loader'
+        ],
         // options: {
         //   transpileOnly: true,
         //   experimentalWatchApi: true,
         // },
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.js$/,
@@ -53,9 +51,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader'
-        ]
+        use: ['file-loader']
       }
     ]
   },
@@ -63,8 +59,8 @@ module.exports = {
     extensions: ['.js', '.ts', '.tsx', '.jsx'],
     alias: {
       '@': path.resolve(__dirname, '../src'),
-      'Utils': path.resolve(__dirname, '../src/utils')
+      Utils: path.resolve(__dirname, '../src/utils')
     }
   },
   stats: 'none'
-};
+}

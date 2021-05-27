@@ -8,7 +8,8 @@
     "build": "webpack --config build/webpack.prod.js",
     "build-in-server": "npm run build && http-server dist",
     "dev:hero": "node build/server.js config=heroWar/webpack.dev.js",
-    "dev:snak": "node build/server.js config=snakGame1/webpack.dev.js",
+    "dev:snak1": "node build/server.js config=snakGame1/webpack.dev.js",
+    "dev:snak": "node build/server.js config=snakGame2/webpack.dev.js",
     "dev:firework": "node build/server.js config=firework/webpack.dev.js"
   },
   "author": "zzp",

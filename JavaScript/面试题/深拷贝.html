@@ -1,72 +1,62 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-	</body>
-	
-	
-	<script>
-		
-		
-//广度优先遍历
-function deepClone(data){
-       var obj = {};
-       var originQueue = [data];
-       var copyQueue = [obj];
-       //以下两个队列用来保存复制过程中访问过的对象，以此来避免对象环的问题（对象的某个属性值是对象本身）
-       var visitQueue = [];
-       var copyVisitQueue = [];
-       while(originQueue.length > 0){
-           var _data = originQueue.shift();
-           var _obj = copyQueue.shift();
-           visitQueue.push(_data);
-           copyVisitQueue.push(_obj);
-           for(var key in _data){
-               var _value = _data[key]
-               if(typeof _value !== 'object'){
-                   _obj[key] = _value;
-               } else {
-                   //使用indexOf可以发现数组中是否存在相同的对象(实现indexOf的难点就在于对象比较)
-                   var index = visitQueue.indexOf(_value);
-                   if(index >= 0){
-                       // 出现环的情况不需要再取出遍历
-                       _obj[key] = copyVisitQueue[index]||"this obj has cloned already";
-                   } else {
-                       originQueue.push(_value);
-                       _obj[key] = {};
-                       copyQueue.push(_obj[key]);
-                   }
-               }
-           }
-       }
-       return obj;
-   }
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body></body>
 
-
-//WeakMap实现深拷贝
-function deepCopy(obj, hash = new WeakMap()) {
-    if(hash.has(obj)) return hash.get(obj)||"this obj has cloned already";
-    let cloneObj = Array.isArray(obj) ? [] : {}
-    hash.set(obj, cloneObj)
-    for (let key in obj) {
-        cloneObj[key] = (typeof obj[key]=='object') ? deepCopy(obj[key], hash) : obj[key];
+  <script>
+    //广度优先遍历
+    function deepClone(data) {
+      var obj = {}
+      var originQueue = [data]
+      var copyQueue = [obj]
+      //以下两个队列用来保存复制过程中访问过的对象，以此来避免对象环的问题（对象的某个属性值是对象本身）
+      var visitQueue = []
+      var copyVisitQueue = []
+      while (originQueue.length > 0) {
+        var _data = originQueue.shift()
+        var _obj = copyQueue.shift()
+        visitQueue.push(_data)
+        copyVisitQueue.push(_obj)
+        for (var key in _data) {
+          var _value = _data[key]
+          if (typeof _value !== 'object') {
+            _obj[key] = _value
+          } else {
+            //使用indexOf可以发现数组中是否存在相同的对象(实现indexOf的难点就在于对象比较)
+            var index = visitQueue.indexOf(_value)
+            if (index >= 0) {
+              // 出现环的情况不需要再取出遍历
+              _obj[key] = copyVisitQueue[index] || 'this obj has cloned already'
+            } else {
+              originQueue.push(_value)
+              _obj[key] = {}
+              copyQueue.push(_obj[key])
+            }
+          }
+        }
+      }
+      return obj
     }
-    return cloneObj
-}
 
+    //WeakMap实现深拷贝
+    function deepCopy(obj, hash = new WeakMap()) {
+      if (hash.has(obj)) return hash.get(obj) || 'this obj has cloned already'
+      let cloneObj = Array.isArray(obj) ? [] : {}
+      hash.set(obj, cloneObj)
+      for (let key in obj) {
+        cloneObj[key] =
+          typeof obj[key] == 'object' ? deepCopy(obj[key], hash) : obj[key]
+      }
+      return cloneObj
+    }
 
+    var a = {}
+    a.a = a
 
-
-
-
-var a = {};
-a.a=a;
-
-var b=deepClone(a)
-console.log(b);
-	 
-	</script>
+    var b = deepClone(a)
+    console.log(b)
+  </script>
 </html>

@@ -20,7 +20,7 @@ export default class BaseCanvas {
     this.context = node.getContext('2d') as CanvasRenderingContext2D
     this.particles = opts.particles || []
     this.resize(opts.width, opts.height)
-    this.trackLevel = opts.trackLevel ?? 1
+    this.trackLevel = opts.trackLevel ?? 0
   }
 
   addParticle(particle: BaseParticle): void {

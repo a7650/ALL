@@ -1,4 +1,4 @@
-;(function (globalThis) {
+(function (globalThis) {
   /**
    * 画布
    */
@@ -174,9 +174,9 @@
         x,
         y,
         text,
-        sizeBase = 2,
-        speedBase = 30,
-        radiusBase = 170
+        sizeBase = 3,
+        speedBase = 7,
+        radiusBase = 140
       } = opts
       super(opts)
       if (text) {
@@ -188,22 +188,20 @@
         textctx.font = fontSize + 'px Verdana'
         textctx.fillStyle = '#ffffff'
 
-        const textWidth = textctx.measureText(text).width
+        const textWidth = parseInt(textctx.measureText(text).width)
         const textHeight = fontSize
-
         textctx.fillText(text, 0, textHeight)
         const imgData = textctx.getImageData(0, 0, textWidth, textHeight * 1.2)
         textctx.fillStyle = '#000000'
         textctx.fillRect(0, 0, textCanvas.width, textCanvas.height)
-
+        const imgDataArr = Array.from(imgData.data)
         for (let h = 0; h < textHeight * 1.2; h += gap) {
           for (let w = 0; w < textWidth; w += gap) {
             let position = (textWidth * h + w) * 4
-            let r = imgData.data[position],
-              g = imgData.data[position + 1],
-              b = imgData.data[position + 2],
-              a = imgData.data[position + 3]
-
+            let r = imgDataArr[position],
+              g = imgDataArr[position + 1],
+              b = imgDataArr[position + 2],
+              a = imgDataArr[position + 3]
             if (r + g + b === 0) {
               continue
             }
@@ -228,6 +226,7 @@
     static textCanvas = new BaseCanvas({ width: 1000, height: 300 })
     static textctx = TextFirework.textCanvas.context
   }
+
   TextFirework.textctx.fillStyle = '#000000'
   TextFirework.textctx.fillRect(
     0,
@@ -509,11 +508,30 @@
     launchFirework(x, y, new HeartFirework({ x, y, ...opts }))
   }
 
-  const randomFirework = () => {
-    const x = window.innerWidth * Math.random()
-    const y = window.innerHeight * Math.random()
-    circleFireworkInvoker(x, y)
-  }
+  const randomFirework = (function () {
+    const queue = new LaunchQueue([
+      (x, y) => {
+        heartFireworkInvoker(x, y, { speedBase: 1 })
+      },
+      (x, y) => {
+        textFireworkInvoker(x, y, '')
+      },
+      (x, y) => {
+        textFireworkInvoker(x, y, '')
+      },
+      (x, y) => {
+        textFireworkInvoker(x, y, '')
+      },
+      (x, y) => {
+        circleFireworkInvoker(x, y)
+      }
+    ])
+    return () => {
+      const x = window.innerWidth * Math.random()
+      const y = window.innerHeight * Math.random()
+      queue.nextFirework(x, y)
+    }
+  })()
 
   const addMouseTrack = () => {
     let colorParticle = new BaseParticle()
@@ -536,12 +554,18 @@
 
   const touchHandler = (function () {
     const queue = new LaunchQueue([
-      // (x, y) => {
-      //   heartFireworkInvoker(x, y, { speedBase: 1 })
-      // },
-      // (x, y) => {
-      //   textFireworkInvoker(x, y, ['我爱你'][0])
-      // },
+      (x, y) => {
+        heartFireworkInvoker(x, y, { speedBase: 1 })
+      },
+      (x, y) => {
+        textFireworkInvoker(x, y, '')
+      },
+      (x, y) => {
+        textFireworkInvoker(x, y, '')
+      },
+      (x, y) => {
+        textFireworkInvoker(x, y, '')
+      },
       (x, y) => {
         circleFireworkInvoker(x, y)
       }
@@ -552,14 +576,12 @@
     }
   })()
 
-  const randomBall = () => {}
-
   /**
    * init
    */
   resizeHandler()
   initRound()
-  // setInterval(randomFirework, 2000)
+  setInterval(randomFirework, 2000)
   addMouseTrack()
   window.addEventListener('resize', resizeHandler)
   document.addEventListener('mousedown', touchHandler)

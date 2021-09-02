@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./utils.js"></script>
+  </head>
+  <body>
+    <div class="name" data-name="zzp" age="23">zzp</div>
+    <div class="name">zzp2</div>
+  </body>
+  <script>
+    $(function () {
+      const a = $('.name')
+      console.log(a[0].dataset)
+      console.log(a[0].getAttribute('age'))
+      setTimeout(() => {
+        a.addClass(['a', 'b'])
+      }, 2000)
+
+      setTimeout(() => {
+        a.nth(1).removeClass(['b'])
+      }, 4000)
+    })
+  </script>
+</html>

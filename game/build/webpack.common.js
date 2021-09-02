@@ -58,5 +58,5 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.jsx']
   },
-  stats: 'none'
+  // stats: 'none'
 }

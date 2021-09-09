@@ -3,7 +3,7 @@ import generate from '@babel/generator'
 import * as types from 'babel-types'
 import template from '@babel/template'
 
-const parser = require('@babel/parser')
+import parser from '@babel/parser'
 
 const sourceCode = `
     console.log(1);
@@ -12,7 +12,7 @@ const sourceCode = `
         console.info(2);
     }
 
-    class Clazz {
+    class Test {
         say() {
             console.debug(3);
         }
@@ -21,12 +21,11 @@ const sourceCode = `
         }
     }
 `
-vistor
 
-// const ast = parser.parse(sourceCode, {
-//   sourceType: 'unambiguous',
-//   plugins: ['jsx']
-// })
+const ast = parser.parse(sourceCode, {
+  sourceType: 'unambiguous'
+})
+console.log(ast)
 
 // traverse(ast, {
 //   CallExpression(path, state) {
@@ -46,26 +45,7 @@ vistor
 //     }
 //   }
 // })
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== 'function' && superClass !== null) {
-    throw new TypeError('Super expression must either be null or a function')
-  }
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: { value: subClass, writable: true, configurable: true }
-  })
-  if (superClass) _setPrototypeOf(subClass, superClass)
-}
 
 // const { code, map } = generate(ast)
 // console.log(code)
 // eval(code)
-
-// class FieldTest {
-//   #name = 'zzp'
-//   getName() {
-//     console.log(this.#name)
-//   }
-// }
-
-// const a = new FieldTest('zzp')
-// console.log(a)

@@ -118,7 +118,7 @@ Function.prototype._bind = function (targetThis) {
   const bind = function () {
     const finalArgs = _concat.call(oriArgs, _slice.call(arguments))
     if (this instanceof bind) {
-      const ret = _apply.call(target, finalArgs)
+      const ret = _apply.call(target, this, finalArgs)
       if (Object(ret) === ret) return ret
       return this
     } else {

@@ -17,9 +17,9 @@ function _deepcopy(obj, hash) {
 
 function getEmpty(o) {
   const type = Object.prototype.toString.call(o)
-  if (type === '[Object Array]') return []
-  if (type === '[Object Object]') return {}
-  return 0
+  if (type === '[object Array]') return []
+  if (type === '[object Object]') return {}
+  return o
 }
 
 function deepCloneBfs(data) {
